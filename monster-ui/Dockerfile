@@ -9,6 +9,8 @@ ARG COMMIT=HEAD
 ARG APPS
 ARG TOKEN
 
+EXPOSE 3000
+
 ENV WWW=/usr/share/nginx
 
 COPY build/setup-os.sh build/setup-os.sh

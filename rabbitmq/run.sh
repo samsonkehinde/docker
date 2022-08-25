@@ -10,8 +10,5 @@ then
 	docker rm -f $NAME
 fi
 echo -n "starting: $NAME "
-docker run $FLAGS \
-	--net $NETWORK \
-	-h $NAME \
-	--name $NAME \
-	kazoo/rabbitmq
+#docker run $FLAGS --net $NETWORK -h $NAME --name $NAME kazoo/rabbitmq
+docker run $FLAGS --net $NETWORK -h $NAME -p 8080:15672 --name $NAME kazoo/rabbitmq

@@ -14,5 +14,5 @@ chmod -R ug=rwX,o= /usr/local/freeswitch/
 chmod -R u=rwx,g=rx /usr/local/freeswitch/bin/*
 
 rm -rf /usr/local/freeswitch/conf
-cp -a /home/user/kazoo-configs/freeswitch /usr/local/freeswitch/conf/
+cp -a ../kazoo-configs/freeswitch /usr/local/freeswitch/conf/
 

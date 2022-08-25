@@ -9,7 +9,7 @@ fi
 git clone $REPO kazoo
 
 . erlang/activate
-COMMIT=$(cat ~/commit)
+COMMIT=$(cat /home/user/commit)
 cd kazoo
 
 if [ -z $BRANCH ]

@@ -1,9 +1,9 @@
-FROM kazoo/base-os
-MAINTAINER Roman Galeev <jamhed@2600hz.com>
+FROM debian:buster
+MAINTAINER Samson Kehinde <samson.kehinde@cloudpractice.cloud>
 
 USER root
 
-ARG REPO=https://freeswitch.org/stash/scm/fs/freeswitch.git
+ARG REPO=https://github.com/signalwire/freeswitch.git -bv1.8 freeswitch
 ARG CONFIG=master
 
 COPY build/setup-os.sh build/setup-os.sh
@@ -16,7 +16,7 @@ COPY etc/commit commit
 COPY build/setup-commit.sh build/setup-commit.sh
 RUN build/setup-commit.sh
 
-COPY etc/modules.conf freeswitch/modules.conf
+#COPY etc/modules.conf freeswitch/modules.conf
 COPY build/configure.sh build/configure.sh
 RUN build/configure.sh
 

@@ -13,8 +13,5 @@ then
 fi
 echo -n "starting: $NAME "
 
-docker run $FLAGS \
-	--net $NETWORK \
-	-h $NAME \
-	--name $NAME \
-	$IMAGE
+#docker run $FLAGS --net $NETWORK -h $NAME --name $NAME $IMAGE
+docker run $FLAGS --net $NETWORK -h $NAME -p 8081:5984 --name $NAME $IMAGE

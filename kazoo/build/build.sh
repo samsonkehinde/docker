@@ -6,7 +6,7 @@ cd kazoo
 if [ -z $BRANCH ]
 then
 	git fetch
-	COMMIT=$(cat ~/commit)
+	COMMIT=$(cat /home/user/commit)
 	git reset --hard $COMMIT
 	git clean -d -f
 fi

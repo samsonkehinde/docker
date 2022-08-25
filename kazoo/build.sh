@@ -1,5 +1,5 @@
 #!/bin/sh -e
-REPO=${2:-"https://github.com/2600hz/kazoo.git"}
+REPO=${2:-"https://github.com/kehindesamson/kazoo.git"}
 COMMIT=${1:-"$(../bin/get-commit $REPO)"}
 
 BRANCH=${BRANCH:-""}

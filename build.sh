@@ -12,6 +12,7 @@ cd ../rabbitmq && ./build.sh
 cd ../couchdb &&./build.sh
 cd ../kamailio && ./build.sh d62fd3e4976633aa6b827d527f4e15de0b08068b
 # 1.6.13
-cd ../freeswitch && ./build.sh e755b430da70bd63eebf1dfddacdce48ce863fce
-cd ../kazoo && ./build.sh
+#cd ../freeswitch && ./build.sh e755b430da70bd63eebf1dfddacdce48ce863fce
+cd ../freeswitch && ./build.sh
+cd ../kazoo && ./build.sh c47805b98551d4394f937af5ad745a54e5b9c808
 cd ../monster-ui && ./build.sh

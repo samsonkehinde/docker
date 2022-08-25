@@ -9,7 +9,7 @@ ENV COUCHDB=couchdb.$NETWORK
 ENV RABBITMQ=rabbitmq.$NETWORK
 
 # override on build with --build-arg option
-ARG REPO=https://github.com/2600hz/kazoo.git
+ARG REPO=https://github.com/kehindesamson/kazoo.git
 ARG SKIP_BUILD
 ARG BRANCH
 ARG UID
@@ -31,7 +31,7 @@ COPY build/cmd.sh ./cmd.sh
 COPY build/setup_uid.sh build/setup_uid.sh
 USER root
 RUN build/setup_uid.sh
-USER user
+#USER user
 
 COPY etc/sys.config sys.config
 COPY build/build.sh build/build.sh
