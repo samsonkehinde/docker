@@ -15,13 +15,12 @@ ARG BRANCH
 ARG UID
 ARG GID
 
-COPY etc/commit /home/user/commit
+COPY etc/commit commit
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 
 COPY etc/config.ini config.ini
 COPY build/run.sh run.sh
-ENTRYPOINT ./run.sh
 
 ENV PATH $PATH:/home/user/bin
 COPY build/sup bin/sup 
@@ -36,3 +35,5 @@ RUN build/setup_uid.sh
 COPY etc/sys.config sys.config
 COPY build/build.sh build/build.sh
 RUN build/build.sh
+
+ENTRYPOINT ./run.sh
