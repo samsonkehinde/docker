@@ -1,9 +1,9 @@
-FROM debian:buster
+FROM debian:stretch
 MAINTAINER Samson Kehinde <samson.kehinde@cloudpractice.cloud>
 
 USER root
 
-ARG REPO=https://github.com/signalwire/freeswitch.git -bv1.8 freeswitch
+ARG REPO=https://github.com/signalwire/freeswitch.git freeswitch
 ARG CONFIG=master
 
 COPY build/setup-os.sh build/setup-os.sh

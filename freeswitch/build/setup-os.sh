@@ -1,7 +1,7 @@
 #!/bin/sh -e
-TOKEN=pat_Qd3vmsDLFznBbPpfTqSgYfFM
+TOKEN=pat_v4HhoVjvxnpxusjSMiGJgSGG
 
-apt-get update && apt-get install -y gnupg2 wget lsb-release
+apt-get update && apt-get install -y gnupg2 wget lsb-release apt-transport-https ca-certificates
 
 wget --http-user=signalwire --http-password=$TOKEN -O /usr/share/keyrings/signalwire-freeswitch-repo.gpg https://freeswitch.signalwire.com/repo/deb/debian-release/signalwire-freeswitch-repo.gpg
 
