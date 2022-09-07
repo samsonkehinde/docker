@@ -13,10 +13,12 @@ COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 
 COPY etc/commit commit
+
 COPY build/setup-commit.sh build/setup-commit.sh
 RUN build/setup-commit.sh
 
-#COPY etc/modules.conf freeswitch/modules.conf
+COPY etc/modules.conf freeswitch/modules.conf
+
 COPY build/configure.sh build/configure.sh
 RUN build/configure.sh
 
@@ -29,8 +31,12 @@ RUN build/setup-config.sh
 COPY build/install.sh build/install.sh
 RUN build/install.sh
 
-USER freeswitch
+RUN ln -s "/usr/local/freeswitch/bin/fs_cli" /usr/bin/fs_cli
+
 WORKDIR "/usr/local/freeswitch"
 
 COPY build/run.sh run.sh
+
+USER freeswitch
+
 ENTRYPOINT [ "./run.sh" ]
