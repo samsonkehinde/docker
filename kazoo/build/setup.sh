@@ -8,10 +8,8 @@ fi
 # REPO is global and must be defined on build
 git clone $REPO kazoo
 
-. /home/user/erlang/activate
-
-COMMIT=$(cat commit)
-
+. erlang/activate
+COMMIT=$(cat ~/commit)
 cd kazoo
 
 if [ -z $BRANCH ]

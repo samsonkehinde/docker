@@ -10,4 +10,7 @@ HOST="${NH[1]}"
 
 [ -d kazoo ] && cd kazoo
 RELX_REPLACE_OS_VARS=true KZname="-name $KAZOO_NODE" \
-   _rel/kazoo/bin/kazoo escript lib/sup-*/priv/sup.escript -n $NAME -c change_me "$*"
+   _rel/kazoo/bin/kazoo escript lib/sup-*/priv/sup.escript \
+   -n $NAME \
+   -c change_me \
+   -t 600 "$*"
