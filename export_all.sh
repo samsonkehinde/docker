@@ -1,5 +1,5 @@
 #!/bin/bash
-export NETWORK=${NETWORK:-"kazoo"}
+#export NETWORK=${NETWORK:-"kazoo"}
 docker rmi -f $(docker images | grep "kehindesamson/kazoo" | cut -d' ' -f 1)
 ./build.sh
 
