@@ -14,7 +14,7 @@ then
 fi
 
 echo -n "starting: $NAME "
-docker run $FLAGS --net $NETWORK -h $NAME -p 8021:8021 -p 8031:8031 -p 11000:11000 -e 8021 --name $NAME --env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} $IMAGE
+docker run $FLAGS --net $NETWORK -h $NAME --name $NAME --env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} $IMAGE
 
 echo -n "adding dispatcher $NAME to kamailio $KAMAILIO "
 docker exec $KAMAILIO dispatcher_add.sh 1 $NAME
