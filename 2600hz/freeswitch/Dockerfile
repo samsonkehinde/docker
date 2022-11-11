@@ -12,6 +12,7 @@ RUN export LATEST_RELEASE=${RELEASE_BASE}/${RELEASE_VER}/${META_PKG}
 
 # Install all system updates
 RUN yum update -y
+RUN yum -y install net-tools wget gdb yum-utils bash-completion epel-release
 
 RUN cd /usr/src && wget --no-check-certificate https://packages.2600hz.com/centos/7/stable/2600hz-release/4.2/2600hz-release-4.2-0.el7.centos.noarch.rpm
 RUN rpm -Uvh 2600hz-release-4.2-0.el7.centos.noarch.rpm
