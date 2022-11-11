@@ -11,7 +11,7 @@ RUN export META_PKG=2600hz-release-${RELEASE_VER}-0.el7.centos.noarch.rpm
 RUN export LATEST_RELEASE=${RELEASE_BASE}/${RELEASE_VER}/${META_PKG}
 
 # Install all system updates
-RUN yum update -y
+RUN yum update -y && RUN yum install -y wget
 
 RUN cd /usr/src && wget --no-check-certificate https://packages.2600hz.com/centos/7/stable/2600hz-release/4.2/2600hz-release-4.2-0.el7.centos.noarch.rpm && \
 rpm -Uvh 2600hz-release-4.2-0.el7.centos.noarch.rpm
@@ -21,7 +21,7 @@ RUN yum-config-manager --disable 2600hz-staging
 RUN yum-config-manager --enable 2600hz-stable
 
 # Install Extra Packages for Enterprise Linux
-RUN yum install -y epel-release wget
+RUN yum install -y epel-release
 
 # Install required packages
 RUN yum install -y yum-utils psmisc
