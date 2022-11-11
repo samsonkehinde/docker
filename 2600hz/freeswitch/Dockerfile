@@ -16,8 +16,7 @@ RUN yum update -y
 # Install Extra Packages for Enterprise Linux
 RUN yum install -y wget epel-release yum-utils
 
-RUN cd /usr/src && wget --no-check-certificate https://packages.2600hz.com/centos/7/stable/2600hz-release/4.2/2600hz-release-4.2-0.el7.centos.noarch.rpm && \
-rpm -Uvh 2600hz-release-4.2-0.el7.centos.noarch.rpm
+RUN cd /usr/src && yum install -y ${LATEST_RELEASE}
 
 RUN yum-config-manager --disable 2600hz-experimental
 RUN yum-config-manager --disable 2600hz-staging
