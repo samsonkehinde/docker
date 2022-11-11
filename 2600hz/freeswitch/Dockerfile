@@ -5,10 +5,10 @@ MAINTAINER Samson Kehinde <samson.kehinde@cloudpractice.cloud>
 # Currently, 4.3 is considered 'stable' so:
 # https://packages.2600hz.com/centos/7/stable/2600hz-release/4.3/2600hz-release-4.3-0.el7.centos.noarch.rpm
 
-RUN export RELEASE_BASE=https://packages.2600hz.com/centos/7/stable/2600hz-release
-RUN export RELEASE_VER=4.3
-RUN export META_PKG=2600hz-release-${RELEASE_VER}-0.el7.centos.noarch.rpm
-RUN export LATEST_RELEASE=${RELEASE_BASE}/${RELEASE_VER}/${META_PKG}
+RUN RELEASE_BASE=https://packages.2600hz.com/centos/7/stable/2600hz-release
+RUN RELEASE_VER=4.3
+RUN META_PKG=2600hz-release-${RELEASE_VER}-0.el7.centos.noarch.rpm
+RUN LATEST_RELEASE=${RELEASE_BASE}/${RELEASE_VER}/${META_PKG}
 
 # Install all system updates
 RUN yum update -y
