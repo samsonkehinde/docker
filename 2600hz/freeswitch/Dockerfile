@@ -16,7 +16,7 @@ RUN yum update -y
 # Install Extra Packages for Enterprise Linux
 RUN yum install -y wget epel-release yum-utils
 
-RUN cd /usr/src && yum install -y ${LATEST_RELEASE}
+RUN yum install -y ${LATEST_RELEASE}
 
 RUN yum-config-manager --disable 2600hz-experimental
 RUN yum-config-manager --disable 2600hz-staging
