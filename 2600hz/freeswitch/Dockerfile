@@ -25,7 +25,6 @@ RUN yum clean all
 # Setup NTPd
 RUN yum install -y ntp
 RUN systemctl enable ntpd
-RUN systemctl restart ntpd
 
 # Install Kazoo-wrapped FreeSWITCH
 RUN yum install -y kazoo-freeswitch
@@ -35,5 +34,5 @@ RUN systemctl disable freeswitch
 
 # Enable and start FreeSWITCH
 RUN systemctl enable kazoo-freeswitch
-RUN systemctl start kazoo-freeswitch
+
 
