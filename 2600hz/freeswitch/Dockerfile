@@ -12,6 +12,7 @@ RUN yum clean all
 RUN systemctl enable ntpd
 
 # Install Kazoo-wrapped FreeSWITCH
+RUN yum-config-manager --disable freeswitch
 RUN yum install -y kazoo-freeswitch
 
 # Disable freeswitch bundled systemctl script
