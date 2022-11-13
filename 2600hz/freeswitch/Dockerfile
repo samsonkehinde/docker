@@ -1,8 +1,8 @@
 FROM centos:7
 MAINTAINER Samson Kehinde <samson.kehinde@cloudpractice.cloud>
 
-wget https://packages.2600hz.com/centos/7/stable/2600hz-release/4.3/2600hz-release-4.3-0.el7.centos.noarch.rpm
-rpm -Uvh 2600hz-release-4.3-0.el7.centos.noarch.rpm
+RUN wget https://packages.2600hz.com/centos/7/stable/2600hz-release/4.3/2600hz-release-4.3-0.el7.centos.noarch.rpm
+RUN rpm -Uvh 2600hz-release-4.3-0.el7.centos.noarch.rpm
 
 # Clear yum cache
 RUN yum clean all
