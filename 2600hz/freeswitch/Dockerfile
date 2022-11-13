@@ -1,6 +1,7 @@
 FROM centos:7
 MAINTAINER Samson Kehinde <samson.kehinde@cloudpractice.cloud>
 
+RUN yum install -y git curl wget zip unzip net-tools psmisc yum-utils ntp zip unzip
 RUN wget https://packages.2600hz.com/centos/7/stable/2600hz-release/4.3/2600hz-release-4.3-0.el7.centos.noarch.rpm
 RUN rpm -Uvh 2600hz-release-4.3-0.el7.centos.noarch.rpm
 
