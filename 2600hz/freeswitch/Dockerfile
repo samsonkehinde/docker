@@ -21,4 +21,4 @@ RUN systemctl disable freeswitch
 # Enable and start FreeSWITCH
 RUN systemctl enable kazoo-freeswitch
 
-
+ENTRYPOINT ["/usr/sbin/kazoo-freeswitch start -nc -nf"]
