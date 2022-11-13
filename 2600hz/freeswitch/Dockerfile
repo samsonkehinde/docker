@@ -9,7 +9,6 @@ RUN rpm -Uvh 2600hz-release-4.3-0.el7.centos.noarch.rpm
 RUN yum clean all
 
 # Setup NTPd
-RUN yum install -y ntp
 RUN systemctl enable ntpd
 
 # Install Kazoo-wrapped FreeSWITCH
