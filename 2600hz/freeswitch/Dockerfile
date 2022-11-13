@@ -1,26 +1,8 @@
 FROM centos:7
 MAINTAINER Samson Kehinde <samson.kehinde@cloudpractice.cloud>
 
-# You can find the latest Kazoo Release RPM here: https://packages.2600hz.com/centos/7/stable/2600hz-release/
-# Currently, 4.3 is considered 'stable' so:
-# https://packages.2600hz.com/centos/7/stable/2600hz-release/4.3/2600hz-release-4.3-0.el7.centos.noarch.rpm
-
-RUN RELEASE_BASE=https://packages.2600hz.com/centos/7/stable/2600hz-release
-RUN RELEASE_VER=4.3
-RUN META_PKG=2600hz-release-${RELEASE_VER}-0.el7.centos.noarch.rpm
-RUN LATEST_RELEASE=${RELEASE_BASE}/${RELEASE_VER}/${META_PKG}
-
-# Install all system updates
-RUN yum update -y
-
-# Install Extra Packages for Enterprise Linux
-RUN yum install -y wget epel-release yum-utils
-
-RUN yum install -y https://packages.2600hz.com/centos/7/stable/2600hz-release/4.3/2600hz-release-4.3-0.el7.centos.noarch.rpm
-
-RUN yum-config-manager --disable 2600hz-experimental
-RUN yum-config-manager --disable 2600hz-staging
-RUN yum-config-manager --enable 2600hz-stable
+wget https://packages.2600hz.com/centos/7/stable/2600hz-release/4.3/2600hz-release-4.3-0.el7.centos.noarch.rpm
+rpm -Uvh 2600hz-release-4.3-0.el7.centos.noarch.rpm
 
 # Clear yum cache
 RUN yum clean all
