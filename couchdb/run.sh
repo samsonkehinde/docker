@@ -1,7 +1,7 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
 IMAGE=${2:-"kazoo/couchdb"}
-NETWORK=${NETWORK:-"kazoo"}
+NETWORK=${NETWORK:-"host"}
 NAME=couchdb.$NETWORK
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
