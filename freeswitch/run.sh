@@ -1,9 +1,9 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
 IMAGE=${2:-"kazoo/freeswitch"}
-NETWORK=${NETWORK:-"host"}
-NAME=${NAME:-"freeswitch.kazoo"}
-KAMAILIO=${KAMAILIO:-"kamailio.kazoo"}
+NETWORK=${NETWORK:-"kazoo"}
+NAME=${NAME:-"freeswitch.$NETWORK"}
+KAMAILIO=${KAMAILIO:-"kamailio.$NETWORK"}
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
@@ -14,7 +14,7 @@ then
 fi
 
 echo -n "starting: $NAME "
-docker run $FLAGS --net $NETWORK -h $NAME --name $NAME --env RABBITMQ=${RABBITMQ:-"rabbitmq.kazoo"} $IMAGE
+docker run $FLAGS --net $NETWORK -h $NAME --name $NAME --env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} $IMAGE
 
 echo -n "adding dispatcher $NAME to kamailio $KAMAILIO "
 docker exec $KAMAILIO dispatcher_add.sh 1 $NAME
