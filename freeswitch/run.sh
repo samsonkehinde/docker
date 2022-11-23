@@ -1,7 +1,7 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
 IMAGE=${2:-"kazoo/freeswitch"}
-NETWORK=${NETWORK:-"kazoo"}
+NETWORK=${NETWORK:-"host"}
 NAME=${NAME:-"freeswitch.$NETWORK"}
 KAMAILIO=${KAMAILIO:-"kamailio.$NETWORK"}
 
