@@ -1,7 +1,8 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-NETWORK=${NETWORK:-"host"}
-NAME=${NAME:-"kamailio.kazoo"}
+NETWORK=${NETWORK:-"kazoo"}
+NAME=${NAME:-"kamailio.$NETWORK"}
+RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"}
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
@@ -12,4 +13,4 @@ then
 fi
 echo -n "starting: $NAME "
 
-docker run $FLAGS --net $NETWORK -h $NAME --name $NAME --env RABBITMQ=${RABBITMQ:-"rabbitmq.kazoo"} kazoo/kamailio
+docker run $FLAGS --net $NETWORK -h $NAME --name $NAME --env RABBITMQ=$RABBITMQ kazoo/kamailio
