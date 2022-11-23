@@ -1,6 +1,7 @@
 #!/bin/sh -e
-TOKEN=pat_AVtnR55toekgUbMbaLm6B9FP
- 
+
+read -p 'Enter Freeswitch Token:' TOKEN
+
 apt-get update && apt-get install -y gnupg2 wget lsb-release apt-transport-https ca-certificates git erlang
  
 wget --http-user=signalwire --http-password=$TOKEN -O /usr/share/keyrings/signalwire-freeswitch-repo.gpg https://freeswitch.signalwire.com/repo/deb/debian-release/signalwire-freeswitch-repo.gpg
