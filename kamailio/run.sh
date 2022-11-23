@@ -1,6 +1,6 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-NETWORK=${NETWORK:-"kazoo"}
+NETWORK=${NETWORK:-"host"}
 NAME=${NAME:-"kamailio.$NETWORK"}
 KAZOO=${KAZOO:-"kazoo.$NETWORK"}
 
