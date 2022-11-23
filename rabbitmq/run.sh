@@ -1,7 +1,7 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
 NETWORK=${NETWORK:-"host"} 
-NAME=rabbitmq.$NETWORK
+NAME=rabbitmq.kazoo
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
 	echo -n "stopping: "
@@ -11,4 +11,4 @@ then
 fi
 echo -n "starting: $NAME "
 #docker run $FLAGS --net $NETWORK -h $NAME --name $NAME kazoo/rabbitmq
-docker run $FLAGS --net $NETWORK -h $NAME -p 8080:15672 --name $NAME kazoo/rabbitmq
+docker run $FLAGS --net $NETWORK -h $NAME --name $NAME kazoo/rabbitmq
