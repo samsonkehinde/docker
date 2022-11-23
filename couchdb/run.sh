@@ -2,7 +2,7 @@
 FLAGS=${1:-"-td"}
 IMAGE=${2:-"kazoo/couchdb"}
 NETWORK=${NETWORK:-"host"}
-NAME=couchdb.$NETWORK
+NAME=couchdb.kazoo
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
