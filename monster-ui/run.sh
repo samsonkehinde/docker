@@ -1,6 +1,6 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-NETWORK=${NETWORK:-"kazoo"}
+NETWORK=${NETWORK:-"host"}
 NAME=monster-ui.$NETWORK
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
