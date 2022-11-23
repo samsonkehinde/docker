@@ -1,5 +1,5 @@
 #!/bin/sh
-
+EXPORT NETWORK=host
 rabbitmq/run.sh
 couchdb/run.sh
 
