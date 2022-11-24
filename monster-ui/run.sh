@@ -1,6 +1,6 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-NETWORK=${NETWORK:-"kazoo"}
+NETWORK=${NETWORK:-"host"}
 NAME=monster-ui.$NETWORK
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
@@ -12,4 +12,4 @@ then
 fi
 echo -n "starting: $NAME "
 
-docker run $FLAGS --net $NETWORK -h $NAME --name $NAME kazoo/monster-ui
+docker run $FLAGS --net $NETWORK --name $NAME kazoo/monster-ui
