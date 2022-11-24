@@ -1,9 +1,9 @@
 #!/bin/sh -e
 FLAGS=${FLAGS:-"-td"}
-NETWORK=${NETWORK:-"host"}
-NAME=${NAME:-"kazoo.$NETWORK"}
-COUCHDB=${COUCHDB:-"couchdb.$NETWORK"}
-RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"}
+NAME=${NAME:-"kazoo"}
+
+read -p "Enter the IP of your RABBITMQ server: " RABBITMQ
+read -p "Enter the IP of your COUCHDB server: " COUCHDB
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
@@ -21,7 +21,7 @@ then
 fi
 
 echo -n "starting: $NAME "
-docker run $FLAGS $KAZOO_SOURCE_VOLUME --net $NETWORK --name $NAME --env NETWORK=$NETWORK --env COUCHDB=$COUCHDB --env RABBITMQ=$RABBITMQ \
+docker run $FLAGS $KAZOO_SOURCE_VOLUME --net host --name $NAME -e NETWORK=host -e COUCHDB=$COUCHDB -e RABBITMQ=$RABBITMQ \
 	--env KAZOO_NODE=kazoo \
 	--env KAZOO_APPS=sysconf,blackhole,callflow,cdr,conference,crossbar,fax,hangups,media_mgr,milliwatt,omnipresence,pivot,registrar,reorder,stepswitch,teletype,trunkstore,webhooks,ecallmgr \
 	kazoo/kazoo
