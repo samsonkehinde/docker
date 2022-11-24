@@ -4,8 +4,6 @@ MAINTAINER Roman Galeev <jamhed@2600hz.com>
 USER root
 WORKDIR /root
 
-ENV NETWORK=kazoo
-ENV RABBITMQ=rabbitmq.$NETWORK
 ARG REPO=https://github.com/kamailio/kamailio.git
 ARG CONFIG=master
 
