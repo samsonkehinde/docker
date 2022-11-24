@@ -1,8 +1,9 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-NETWORK=${NETWORK:-"host"}
-NAME=${NAME:-"kamailio.$NETWORK"}
-RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"}
+NAME=${NAME:-"kamailio"}
+
+# Request for the IP of RabbitMQ to use for this Kamailio Instance.
+read -p "Enter RabbitMQ IP:" RABBITMQ
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
@@ -13,4 +14,4 @@ then
 fi
 echo -n "starting: $NAME "
 
-docker run $FLAGS --net $NETWORK --name $NAME --env RABBITMQ=$RABBITMQ kazoo/kamailio
+docker run $FLAGS --net host --name $NAME --env RABBITMQ=$RABBITMQ kazoo/kamailio
