@@ -1,7 +1,8 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-NETWORK=${NETWORK:-"host"}
 NAME=monster-ui.$NETWORK
+
+read -p "Enter Kazoo Server IP:" KAZOO
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
@@ -12,4 +13,4 @@ then
 fi
 echo -n "starting: $NAME "
 
-docker run $FLAGS --net $NETWORK --name $NAME kazoo/monster-ui
+docker run $FLAGS --net host --name $NAME kazoo/monster-ui --env KAZOO
