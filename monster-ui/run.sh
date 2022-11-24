@@ -13,4 +13,4 @@ then
 fi
 echo -n "starting: $NAME "
 
-docker run $FLAGS --net host --name $NAME kazoo/monster-ui -e KAZOO=$KAZOO
+docker run $FLAGS --net host --name $NAME kazoo/monster-ui --add-host KAZOO-SERVER=$KAZOO
