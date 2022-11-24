@@ -5,7 +5,7 @@ USER root
 WORKDIR /root
 
 ARG REPO=https://github.com/2600hz/monster-ui.git 
-ARG COMMIT=HEAD
+ARG COMMIT=5.1
 ARG APPS
 ARG TOKEN
 
