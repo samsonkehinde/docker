@@ -11,7 +11,7 @@ MY_HOSTNAME=$(hostname)
 /bin/sed -i "s/MY_HOSTNAME!.*!/MY_HOSTNAME!$MY_HOSTNAME!/g" $ROOT/local.cfg
 
 # rabbitmq
-/bin/sed -i "s/MY_AMQP_URL!.*!/MY_AMQP_URL!kazoo:\/\/guest:guest@$RABBITMQ:5672!/g" $ROOT/local.cfg
+/bin/sed -i "s/MY_AMQP_URL!.*!/MY_AMQP_URL!kazoo:\/\/guest:guest@rabbitmq-server:5672!/g" $ROOT/local.cfg
 
 # reduce spawn children
 /bin/sed -i "s/^children\s*=.*$/children = 2/g" $ROOT/default.cfg
