@@ -1,7 +1,7 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
 IMAGE=${2:-"kazoo/couchdb"}
-NAME=couchdb
+NAME=${NAME:-"couchdb"}
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
