@@ -1,6 +1,6 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-NAME=monster-ui.$NETWORK
+NAME=${NAME:-"monster-ui"}
 
 read -p "Enter Kazoo Server IP:" KAZOO
 
