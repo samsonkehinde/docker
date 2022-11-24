@@ -13,4 +13,4 @@ then
 fi
 echo -n "starting: $NAME "
 
-docker run $FLAGS --net $NETWORK -h $NAME --name $NAME --env RABBITMQ=$RABBITMQ kazoo/kamailio
+docker run $FLAGS --net $NETWORK --name $NAME --env RABBITMQ=$RABBITMQ kazoo/kamailio
