@@ -1,6 +1,5 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-NETWORK=${NETWORK:-"kazoo"}
 NAME=rabbitmq.$NETWORK
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
