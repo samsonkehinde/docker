@@ -24,7 +24,7 @@ data "vsphere_network" "mgmt_lan" {
 }
 
 resource "vsphere_virtual_machine" "test2" {
-  name             = "${var.vm-id}"
+  name             = "${var.vm-name}-${var.vm-id}"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
 
@@ -40,7 +40,7 @@ resource "vsphere_virtual_machine" "test2" {
 
   disk {
    size             = 16
-   name             = ""${var.disk-name}""
+   name             = "${var.vm-name}-${var.vm-id}.vmdk"
    eagerly_scrub    = false
    thin_provisioned = true
   }
