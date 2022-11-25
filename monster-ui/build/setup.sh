@@ -6,6 +6,7 @@ git clone --depth 1 --no-single-branch $REPO html
 
 echo "Setup node"
 cd $WWW/html
+npm install -g npm@9.1.2
 npm install
 npm -g install gulp
 
