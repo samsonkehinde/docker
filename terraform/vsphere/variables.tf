@@ -4,7 +4,7 @@ variable "vsphere_password" {}
 variable "vm-id"{
   default: "2"
 }
-variable "vm-disk-name"{
-  default: "racher2.vmdk"
+variable "vm-name"{
+  default: "racher"
 }
 
