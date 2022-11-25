@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:15
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 USER root
