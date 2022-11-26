@@ -1,8 +1,6 @@
 FROM kazoo/base-os
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
-#ARG COMMIT=HEAD
-
 USER root
 
 COPY build/setup-os.sh build/setup-os.sh
