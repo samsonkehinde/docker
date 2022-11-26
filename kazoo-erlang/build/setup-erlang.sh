@@ -1,9 +1,12 @@
 #!/bin/sh -e
-curl -O https://raw.githubusercontent.com/kerl/kerl/master/kerl
-chmod +x kerl
-mv kerl /usr/bin
-kerl update releases
-kerl build 19.3.6.5 19.3.6.5 # this takes a while
-kerl install 19.3.6.5 erlang
-. erlang/activate
-kerl cleanup all
+wget http://www.erlang.org/download/otp_src_19.2.tar.gz
+tar -zxf otp_src_19.2.tar.gz
+
+cd otp_src_19.2
+export ERL_TOP=`pwd` 
+
+./configure # Prepare to install Erlang/OTP release to /usr/local/{bin,lib/erlang}
+make
+make install
+
+
