@@ -1,5 +1,5 @@
 #!/bin/sh -e
-wget http://www.erlang.org/download/otp_src_19.2.tar.gz
+wget --no-check-certificate http://www.erlang.org/download/otp_src_19.2.tar.gz
 tar -zxf otp_src_19.2.tar.gz
 
 cd otp_src_19.2
