@@ -1,9 +1,7 @@
 #!/bin/sh -e
 FLAGS=${FLAGS:-"-td"}
-NAME=${NAME:-"kazoo"}
-
-read -p "Enter the IP of your RABBITMQ server: " RABBITMQ
-read -p "Enter the IP of your COUCHDB server: " COUCHDB
+RABBITMQ=${RABBITMQ:-"rabbitmq.host"}
+COUCHDB=${COUCHDB:-"couchdb.host"}
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
