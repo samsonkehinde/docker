@@ -3,9 +3,7 @@ FLAGS=${1:-"-td"}
 IMAGE=${2:-"kazoo/freeswitch"}
 NAME=${NAME:-"freeswitch"}
 #KAMAILIO=${KAMAILIO:-"kamailio"}
-
-
-read -p "Enter the IP of your RABBITMQ server: " RABBITMQ
+RABBITMQ=${RABBITMQ:-"127.0.0.1"}
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
 then
