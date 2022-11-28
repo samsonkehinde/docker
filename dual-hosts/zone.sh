@@ -6,5 +6,5 @@ read -p "Enter the IP of your COUCHDB server: " COUCHDB
 export RABBITMQ=$RABBITMQ
 export COUCHDB=$COUCHDB
 
-kazoo/run.sh
-freeswitch/run.sh
+../kazoo/run.sh
+../freeswitch/run.sh
