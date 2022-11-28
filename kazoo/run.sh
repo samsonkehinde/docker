@@ -4,12 +4,12 @@ RABBITMQ=${RABBITMQ:-"rabbitmq.kazoo"}
 COUCHDB=${COUCHDB:-"couchdb.kazoo"}
 $NAME=${$NAME:-"kazoo.kazoo"}
 
-while read ID; do
-	echo -n "stopping: "
-	docker stop -t 1 ID
-	echo -n "removing: "
-	docker rm -f ID
-done < (docker ps -aq -f name=$NAME)
+docker ps -aq -f name=$NAME | while read ID; do
+        echo -n "stopping: "
+        docker stop -t 1 $ID
+        echo -n "removing: "
+        docker rm -f $ID
+done
 
 if [ -n "$KAZOO_SOURCE" ]
 then
