@@ -1,15 +1,15 @@
 #!/bin/sh -e
 FLAGS=${FLAGS:-"-td"}
-RABBITMQ=${RABBITMQ:-"rabbitmq.host"}
-COUCHDB=${COUCHDB:-"couchdb.host"}
+RABBITMQ=${RABBITMQ:-"rabbitmq.kazoo"}
+COUCHDB=${COUCHDB:-"couchdb.kazoo"}
+$NAME=${$NAME:-"kazoo.kazoo"}
 
-if [ -n "$(docker ps -aq -f name=$NAME)" ]
-then
+while read ID; do
 	echo -n "stopping: "
-	docker stop -t 1 $NAME
+	docker stop -t 1 ID
 	echo -n "removing: "
-	docker rm -f $NAME
-fi
+	docker rm -f ID
+done < docker ps -aq -f name=$NAME
 
 if [ -n "$KAZOO_SOURCE" ]
 then
