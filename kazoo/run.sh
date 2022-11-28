@@ -9,7 +9,7 @@ while read ID; do
 	docker stop -t 1 ID
 	echo -n "removing: "
 	docker rm -f ID
-done < docker ps -aq -f name=$NAME
+done < (docker ps -aq -f name=$NAME)
 
 if [ -n "$KAZOO_SOURCE" ]
 then
