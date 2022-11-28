@@ -10,4 +10,4 @@ docker ps -aq -f name=$NAME | while read ID; do
 done
 
 echo -n "starting: $NAME "
-docker run $FLAGS --net host --name $NAME kazoo/rabbitmq
+docker run $FLAGS --net host --name $NAME -e RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS='-rabbit channel_max 0' kazoo/rabbitmq
