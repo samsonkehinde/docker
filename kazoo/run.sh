@@ -2,7 +2,7 @@
 FLAGS=${FLAGS:-"-td"}
 RABBITMQ=${RABBITMQ:-"rabbitmq.kazoo"}
 COUCHDB=${COUCHDB:-"couchdb.kazoo"}
-$NAME=${$NAME:-"kazoo.kazoo"}
+NAME=${NAME:-"kazoo.kazoo"}
 
 docker ps -aq -f name=$NAME | while read ID; do
         echo -n "stopping: "
