@@ -5,11 +5,11 @@
 ../kamailio/run.sh
 ../monster-ui/run.sh
 
-for CONTAINER in monster-ui rabbitmq kamailio couchdb
+for CONTAINER in freeswitch kazoo
 do
 	if [ "$(docker inspect -f {{.State.Running}} $CONTAINER.kazoo)" = "true" ]
 	then
-		echo -n '127.0.0.1\n' $CONTAINER.$NETWORK
+		echo -n '$KAZOOIP' $CONTAINER.$NETWORK
 	fi
 done
 exit
