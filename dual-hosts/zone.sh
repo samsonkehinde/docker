@@ -1,10 +1,8 @@
 #!/bin/sh
 
 read -p "Enter the IP of KAZOO HOST: " KAZOO_IP
-RABBITMQ=KAZOO_IP
-COUCHDB=KAZOO_IP
 
-export RABBITMQ COUCHDB
+export KAZOO_IP
 
 ../kazoo/run.sh
 ../freeswitch/run.sh
