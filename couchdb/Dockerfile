@@ -18,4 +18,4 @@ WORKDIR /var/lib/couchdb
 ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
 CMD ["couchdb"]
 
-COPY etc/local.ini /usr/local/etc/couchdb/local.ini
+COPY etc/local.ini /opt/couchdb/etc/
