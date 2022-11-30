@@ -1,7 +1,7 @@
 #!/bin/sh
 
-export RABBITMQ=${RABBITMQ:-"rabbitmq.kazoo"}
-export COUCHDB=${COUCHDB:-"rabbitmq.couchdb"}
+read -p "Enter the IP of KAZOO HOST: " KAZOO_IP
+export KAZOO_IP
 
 ../kazoo/run.sh
 ../freeswitch/run.sh
