@@ -12,4 +12,4 @@ done
 
 echo -n "starting: $NAME "
 
-docker run $FLAGS --net host --name $NAME $IMAGE
+docker run $FLAGS --net host -h $NAME --name $NAME $IMAGE
