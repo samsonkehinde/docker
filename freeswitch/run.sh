@@ -12,5 +12,5 @@ docker ps -aq -f name=$NAME | while read ID; do
 done
 
 echo -n "starting: $NAME "
-docker run $FLAGS --net host --name $NAME -e RABBITMQ=$RABBITMQ $IMAGE
+docker run $FLAGS --net="host" --name $NAME -e RABBITMQ=$RABBITMQ $IMAGE
 
