@@ -23,3 +23,5 @@ if [[ -n "$ZONE_IP" ]]; then
 		echo -n " --add-host=$CONTAINER.kazoo:$ZONE_IP"
 	done
 fi
+
+echo " -td"
