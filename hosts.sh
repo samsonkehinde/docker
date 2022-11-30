@@ -24,4 +24,4 @@ if [[ -n "$ZONE_IP" ]]; then
 	done
 fi
 
-echo -n "-td"
+echo -n " -td"
