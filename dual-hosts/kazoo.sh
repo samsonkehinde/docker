@@ -12,4 +12,7 @@ do
 		echo -n '$KAZOOIP' $CONTAINER.$NETWORK
 	fi
 done
+
+../hosts.sh >> /etc/hosts
+
 exit
