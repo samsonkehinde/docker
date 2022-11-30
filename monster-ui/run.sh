@@ -11,4 +11,4 @@ done
 
 echo -n "starting: $NAME "
 
-docker run $FLAGS --net host --name $NAME kazoo/monster-ui
+docker run $FLAGS --net host -h $NAME --name $NAME kazoo/monster-ui
