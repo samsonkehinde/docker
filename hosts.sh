@@ -3,7 +3,7 @@
 ZONE_IP=${ZONE_IP:-""}
 KAZOO_IP=${KAZOO_IP:-""}
 
-if [ -n ZONE_IP ]; then
+if [[ -n ZONE_IP ]]; then
 	for CONTAINER in freeswitch kazoo; do
 		if [ "$(docker inspect -f {{.State.Running}} $CONTAINER.kazoo)" = "true" ]; then
 			echo "$ZONE_IP $CONTAINER.kazoo"
@@ -15,7 +15,7 @@ if [ -n ZONE_IP ]; then
 	done
 fi
 
-if [ -n KAZOO_IP ]; then
+if [[ -n KAZOO_IP ]]; then
 	for CONTAINER in monster-ui rabbitmq kamailio couchdb; do
 		if [ "$(docker inspect -f {{.State.Running}} $CONTAINER.kazoo)" = "true" ]; then
 			echo "$KAZOO_IP $CONTAINER.kazoo"
