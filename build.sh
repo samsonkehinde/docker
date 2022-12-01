@@ -13,7 +13,7 @@ cd ../kazoo-erlang && ./build.sh
 cd ../rabbitmq && ./build.sh
 
 # Setup CouchDB
-cd ../couchdb &&./build.sh
+cd ../couchdb && ./build.sh
 
 # Setup Kamailio
 # The configuration file for kazoo works with the below version.
