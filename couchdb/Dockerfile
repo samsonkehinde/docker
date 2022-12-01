@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM latest
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 COPY build build
