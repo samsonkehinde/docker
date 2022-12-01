@@ -25,7 +25,7 @@ cd ../kamailio && ./build.sh d62fd3e4976633aa6b827d527f4e15de0b08068b
 # 1.8
 #cd ../freeswitch && ./build.sh 6047ebddfcb06c131a91f329e86fc8efba3e9e31
 # 1.10
-#cd ../freeswitch && ./build.sh 883d2cb662bed0316e157bd3beb9853e96c60d02
+cd ../freeswitch && ./build.sh 883d2cb662bed0316e157bd3beb9853e96c60d02
 
 #cd ../freeswitch2 && ./build.sh
 #************************************************************************
