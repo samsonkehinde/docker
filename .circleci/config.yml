@@ -6,9 +6,6 @@ workflows:
   build_branch:
     jobs:
       - build
-      - push_images:
-          requires:
-            - build
 
 defaults: &defaults
   docker:
