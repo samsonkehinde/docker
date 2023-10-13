@@ -7,12 +7,12 @@ workflows:
     jobs:
       - build_base_os
       - build_couchdb
-        requires:
-          - build_base_os
+          requires:
+            - build_base_os
       - push_images
-        requires:
-          - build_base_os
-          - build_couchdb
+          requires:
+            - build_base_os
+            - build_couchdb
 
 defaults: &defaults
   docker:
