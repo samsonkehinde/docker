@@ -24,7 +24,9 @@ jobs:
       - setup_remote_docker   
       - run:
           name: Build BaseOs
-          command: cd base-os && docker build $BUILD_FLAGS -t $NETWORK/base-os .
+          command: |
+            cd base-os
+            docker build $BUILD_FLAGS -t $NETWORK/base-os .
       - deploy:
           name: Push base image to docker
           command: |
