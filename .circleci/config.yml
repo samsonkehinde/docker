@@ -46,6 +46,8 @@ jobs:
 
   build_couchdb:
     <<: *defaults
+    requires:
+      - build_base_os
     steps:
       - attach_workspace:
           at: .
