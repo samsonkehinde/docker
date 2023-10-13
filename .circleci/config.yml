@@ -53,7 +53,14 @@ jobs:
           command: |
             # Build Kazoo 4.3
             cd kazoo && ./build.sh b556db9263b51e4869d28ae9d459489c5731aca1
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kazoo .       
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kazoo .   
+
+      - run:
+          name: Build Monster-UI
+          command: |
+            # Build Monster-UI 4.3
+            cd monster-ui && ./build.sh 197ea75edd931fbed9cf33120e65cef854eb14a9
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:monster-ui .     
 
       - run:
           name: Push base image to docker
@@ -64,4 +71,5 @@ jobs:
               docker push thecloudpractice/$NETWORK:couchdb
               docker push thecloudpractice/$NETWORK:rabbitmq
               docker push thecloudpractice/$NETWORK:kazoo
+              docker push thecloudpractice/$NETWORK:monster-ui
             fi          

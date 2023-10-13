@@ -13,6 +13,7 @@ then
 fi
 
 # REPO is global and must be defined on build
+echo $REPO
 git clone $REPO kazoo
 
 #. /home/user/erlang/activate
