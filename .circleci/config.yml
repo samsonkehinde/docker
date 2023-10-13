@@ -14,7 +14,7 @@ defaults: &defaults
   shell: /bin/bash --login
   environment:
     BASH_ENV: ".git/.bashrc"
-      NETWORK: kazoo
+    NETWORK: kazoo
     
 jobs:
   build:
