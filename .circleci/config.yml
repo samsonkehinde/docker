@@ -6,10 +6,10 @@ workflows:
   build_branch:
     jobs:
       - build_base_os
-      - build_couchdb
+      - build_couchdb:
           requires:
             - build_base_os
-      - push_images
+      - push_images:
           requires:
             - build_base_os
             - build_couchdb
