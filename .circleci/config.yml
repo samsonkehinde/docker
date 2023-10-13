@@ -14,7 +14,6 @@ defaults: &defaults
   shell: /bin/bash --login
   environment:
     BASH_ENV: ".git/.bashrc"
-    NETWORK: kazoo
     
 jobs:
   build:
@@ -46,7 +45,7 @@ jobs:
       - run:
           name: Push base image to docker
           command: |
-            if [ "$ {CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
               docker push thecloudpractice/$NETWORK:base-os
               docker push thecloudpractice/$NETWORK:couchdb
