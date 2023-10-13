@@ -1,5 +1,5 @@
 #!/bin/sh -e
-COUCHDB_VERSION=1.6.1
+COUCHDB_VERSION=3.0.0
 curl -fSL https://archive.apache.org/dist/couchdb/source/$COUCHDB_VERSION/apache-couchdb-$COUCHDB_VERSION.tar.gz -o couchdb.tar.gz
 curl -fSL https://archive.apache.org/dist/couchdb/source/$COUCHDB_VERSION/apache-couchdb-$COUCHDB_VERSION.tar.gz.asc -o couchdb.tar.gz.asc
 
