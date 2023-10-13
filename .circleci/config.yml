@@ -44,7 +44,9 @@ jobs:
 
       - run:
           name: Build RabbitMQ
-          command: cd rabbitmq && ./build.sh
+          command: |
+            cd rabbitmq && ./build.sh
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:rabbitmq .  
 
       - run:
           name: Push base image to docker
