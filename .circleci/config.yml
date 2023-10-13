@@ -40,7 +40,7 @@ jobs:
           name: Push base image to docker
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u username -p password
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
               docker push thecloudpractice/$NETWORK:base-os
             fi
       - persist_to_workspace:
