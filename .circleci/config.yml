@@ -55,4 +55,5 @@ jobs:
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
               docker push thecloudpractice/$NETWORK:base-os
               docker push thecloudpractice/$NETWORK:couchdb
+              docker push thecloudpractice/$NETWORK:rabbitmq
             fi          
