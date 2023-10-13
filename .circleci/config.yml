@@ -9,7 +9,7 @@ workflows:
 
 defaults: &defaults
   docker:
-    - image: docker:git
+    - image: python:3.8
   working_directory: ~/2600hz/kazoo
   shell: /bin/bash --login
   environment:
