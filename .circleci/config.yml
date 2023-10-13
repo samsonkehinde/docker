@@ -5,14 +5,10 @@ workflows:
 
   build_branch:
     jobs:
-      - build_base_os
-      - build_couchdb:
-          requires:
-            - build_base_os
+      - build
       - push_images:
           requires:
-            - build_base_os
-            - build_couchdb
+            - build
 
 defaults: &defaults
   docker:
@@ -43,22 +39,12 @@ jobs:
           command: |
             cd base-os
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:base-os .
-      
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .  
 
-  build_couchdb:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: .
       - run:
           name: Build CouchDB
           command: |
             cd couchdb
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:couchdb .          
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:couchdb .  
 
   push_images:
     <<: *defaults
