@@ -6,6 +6,7 @@ workflows:
   build_branch:
     jobs:
       - build_base_os
+      - build_couchdb
       - push_images
 
 defaults: &defaults
