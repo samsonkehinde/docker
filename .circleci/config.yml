@@ -5,7 +5,8 @@ workflows:
 
   build_branch:
     jobs:
-      - build
+      - build_base_os
+      - push_images
 
 defaults: &defaults
   docker:
@@ -17,7 +18,7 @@ defaults: &defaults
     NETWORK: kazoo
     
 jobs:
-  build:
+  build_base_os:
     <<: *defaults
     steps:
       - checkout
@@ -36,16 +37,36 @@ jobs:
           command: |
             cd base-os
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:base-os .
-      - deploy:
-          name: Push base image to docker
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-              docker push thecloudpractice/$NETWORK:base-os
-            fi
+      
       - persist_to_workspace:
           root: .
           paths:
             - .  
 
-            
+  build_couchdb:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build CouchDB
+          command: |
+            cd couchdb
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:couchdb .          
+
+  push_images:
+    <<: *defaults
+    steps:
+      - requires:
+          - build_base_os
+          - build_couchdb
+      - attach_workspace:
+          at: .
+      - deploy:
+          name: Push base image to docker
+          command: |
+            if ["${CIRCLE_BRANCH}" == "master"]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push thecloudpractice/$NETWORK:base-os
+              docker push thecloudpractice/$NETWORK:couchdb
+            fi          
