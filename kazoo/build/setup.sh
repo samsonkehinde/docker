@@ -13,10 +13,10 @@ then
 fi
 
 # Install Erlang 19
-git clone https://github.com/erlang/otp.git
-cd otp
-export ERL_TOP=`pwd`
-git checkout OTP-19.3.6.13
+wget http://www.erlang.org/download/otp_src_19.3.tar.gz
+tar -zxf otp_src_19.3.tar.gz
+cd otp_src_19.3
+export ERL_TOP=`pwd` 
 ./configure
 make
 make install
