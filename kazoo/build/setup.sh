@@ -12,11 +12,19 @@ then
 	exit 0
 fi
 
+# Install Erlang 19
+git clone https://github.com/erlang/otp.git
+cd otp
+export ERL_TOP=`pwd`
+git checkout OTP-19.3.6.13
+./configure
+make
+make install
+export PATH=$ERL_TOP/bin:$PATH     # Assuming bash/sh
+
 # REPO is global and must be defined on build
 echo $REPO
 git clone $REPO kazoo
-
-#. /home/user/erlang/activate
 
 COMMIT=$(cat commit)
 
