@@ -16,7 +16,7 @@ defaults: &defaults
     BASH_ENV: ".git/.bashrc"
     
 jobs:
-  setup:
+  build:
     <<: *defaults
     steps:
       - checkout
