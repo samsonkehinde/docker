@@ -1,8 +1,7 @@
-FROM kazoo/erlang
+FROM erlang:22.3-slim
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 # override on run with --env option
-ENV NETWORK=kazoo
 ENV NODE_NAME=kazoo
 ENV KAZOO_APPS=sysconf,blackhole,callflow,cdr,conference,crossbar,fax,hangups,media_mgr,milliwatt,omnipresence,pivot,registrar,reorder,stepswitch,teletype,trunkstore,webhooks,ecallmgr
 ENV COUCHDB=couchdb.$NETWORK

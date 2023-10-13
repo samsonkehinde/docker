@@ -51,7 +51,8 @@ jobs:
       - run:
           name: Build Kazoo
           command: |
-            cd kazoo && ./build.sh
+            # Build Kazoo 4.3
+            cd kazoo && ./build.sh 44d74cd7373e7706f6afa9809a1d07294c60258d
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kazoo .       
 
       - run:
@@ -62,4 +63,5 @@ jobs:
               docker push thecloudpractice/$NETWORK:base-os
               docker push thecloudpractice/$NETWORK:couchdb
               docker push thecloudpractice/$NETWORK:rabbitmq
+              docker push thecloudpractice/$NETWORK:kazoo
             fi          
