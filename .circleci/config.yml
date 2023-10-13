@@ -9,11 +9,12 @@ workflows:
 
 defaults: &defaults
   docker:
-    - image: cimg/base
+    - image: docker:git
   working_directory: ~/2600hz/kazoo
   shell: /bin/bash --login
   environment:
     BASH_ENV: ".git/.bashrc"
+      NETWORK: kazoo
     
 jobs:
   build:
@@ -22,23 +23,14 @@ jobs:
       - checkout
       - setup_remote_docker   
       - run:
-        # installs a docker client that will be used to run the docker commands
-          name: Install Docker client
-          command: |
-            set -x
-            VER="17.03.0-ce"
-            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
-            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-            mv /tmp/docker/* /usr/bin
-      - run:
           name: Build BaseOs
-          command: cd base-os && ./build.sh
+          command: cd base-os && docker build $BUILD_FLAGS -t $NETWORK/base-os .
       - deploy:
           name: Push base image to docker
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u username -p password
-              docker push thecloudpractice/kazoo:base-os
+              docker push thecloudpractice/$NETWORK:base-os
             fi
       - persist_to_workspace:
           root: .
