@@ -35,7 +35,7 @@ jobs:
           name: Build BaseOs
           command: |
             cd base-os
-            docker build $BUILD_FLAGS -t $NETWORK/base-os .
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:base-os .
       - deploy:
           name: Push base image to docker
           command: |
