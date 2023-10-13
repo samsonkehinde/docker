@@ -9,8 +9,7 @@ workflows:
 
 defaults: &defaults
   docker:
-    - image: offical2600hz/circleci:19.3.6.13
-    - user: root
+    - image: docker:17.05.0-ce-git
   working_directory: ~/2600hz/kazoo
   shell: /bin/bash --login
   environment:
