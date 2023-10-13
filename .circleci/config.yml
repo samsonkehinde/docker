@@ -20,7 +20,7 @@ defaults: &defaults
     NETWORK: kazoo
     
 jobs:
-  build_base_os:
+  build:
     <<: *defaults
     steps:
       - checkout
