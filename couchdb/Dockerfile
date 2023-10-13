@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:buster
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 COPY build build
