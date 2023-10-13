@@ -49,6 +49,12 @@ jobs:
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:rabbitmq .  
 
       - run:
+          name: Build Kazoo
+          command: |
+            cd kazoo && ./build.sh
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kazoo .       
+
+      - run:
           name: Push base image to docker
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
