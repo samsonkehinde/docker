@@ -46,12 +46,7 @@ jobs:
             cd couchdb
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:couchdb .  
 
-  push_images:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: .
-      - deploy:
+      - run:
           name: Push base image to docker
           command: |
             if ["${CIRCLE_BRANCH}" == "master"]; then
