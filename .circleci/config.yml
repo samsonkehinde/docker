@@ -43,6 +43,10 @@ jobs:
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:couchdb .  
 
       - run:
+          name: Build RabbitMQ
+          command: cd rabbitmq && ./build.sh
+
+      - run:
           name: Push base image to docker
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
