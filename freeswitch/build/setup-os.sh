@@ -3,7 +3,7 @@
 
 apt-get update
 apt-get install -y gnupg2 wget lsb-release apt-transport-https ca-certificates libldns-dev
-echo "Signalwire Token: $SW_TOKEN"
+echo "Signalwire Token: ${SW_TOKEN}"
 wget --http-user=signalwire --http-password=${SW_TOKEN} -O /usr/share/keyrings/signalwire-freeswitch-repo.gpg https://freeswitch.signalwire.com/repo/deb/debian-release/signalwire-freeswitch-repo.gpg
 
 echo "machine freeswitch.signalwire.com login signalwire password ${SW_TOKEN}" > /etc/apt/auth.conf
