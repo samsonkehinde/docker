@@ -9,7 +9,7 @@ workflows:
 
 defaults: &defaults
   docker:
-    - image: offical2600hz/circleci:19.3.6.13
+    - image: cimg/python:3.10.0
       auth:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
@@ -25,7 +25,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          docker_layer_caching: false
 
       - run:
           name: Build Freeswitch
