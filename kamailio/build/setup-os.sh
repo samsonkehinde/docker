@@ -9,7 +9,7 @@
 
 #!/bin/sh -e
 apt-get install -y make flex libsnmp-dev bison python build-essential zip unzip libexpat-dev \
-	unixodbc-dev libssh2-1-dev libssl-dev libncurses5-dev python
+	unixodbc-dev libssh2-1-dev libssl-dev libncurses5-dev libjson-c-dev
 apt-get -y clean
 
 apt-get -y clean
