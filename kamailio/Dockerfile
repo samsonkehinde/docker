@@ -1,4 +1,4 @@
-FROM kazoo/base-os
+FROM thecloudpractice/kazoo:base-os
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 USER root
@@ -7,7 +7,7 @@ WORKDIR /root
 ENV NETWORK=kazoo
 ENV RABBITMQ=rabbitmq.$NETWORK
 ARG REPO=https://github.com/kamailio/kamailio.git
-ARG CONFIG=master
+ARG CONFIG=4.3
 
 COPY build/setup-os.sh build/setup-os.sh
 RUN build/setup-os.sh

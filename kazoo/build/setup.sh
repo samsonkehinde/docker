@@ -12,19 +12,17 @@ then
 	exit 0
 fi
 
-# Install Erlang 19
-wget http://www.erlang.org/download/otp_src_19.3.tar.gz
-tar -zxf otp_src_19.3.tar.gz
-cd otp_src_19.3
-export ERL_TOP=`pwd` 
-./configure
-make
-make install
-export PATH=$ERL_TOP/bin:$PATH     # Assuming bash/sh
+#!/bin/sh -e
+curl -O -k https://raw.githubusercontent.com/kerl/kerl/master/kerl
+chmod +x kerl
+./kerl update releases
+./kerl build 19.2 19.2
+./kerl build-install 19.2 19.2 erlang
+#. erlang/activate
+./kerl cleanup all
 
 # REPO is global and must be defined on build
 echo $REPO
-cd ..
 git clone $REPO kazoo
 COMMIT=$(cat commit)
 cd kazoo

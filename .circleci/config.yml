@@ -70,6 +70,13 @@ jobs:
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:freeswitch . 
 
       - run:
+          name: Build Kamailio
+          command: |
+            # Build Kamailio 5.0.0 with kazoo v4.3 config.
+            cd kamailio && ./build.sh d62fd3e4976633aa6b827d527f4e15de0b08068b
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kamailio . 
+
+      - run:
           name: Push base image to docker
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
@@ -80,4 +87,5 @@ jobs:
               docker push thecloudpractice/$NETWORK:kazoo
               docker push thecloudpractice/$NETWORK:monster-ui
               docker push thecloudpractice/$NETWORK:freeswitch
+              docker push thecloudpractice/$NETWORK:kamailio
             fi          
