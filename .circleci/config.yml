@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Build Kamailio
           command: |
-            # Build Kamailio 5.0.0 with kazoo v4.3 config.
-            cd kamailio && ./build.sh d62fd3e4976633aa6b827d527f4e15de0b08068b
+            # Build Kamailio 5.1.0 with kazoo v4.3 config.
+            cd kamailio && ./build.sh 327548cbfdc2c5331d9a9264aa6a1571c35ff02e
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kamailio . 
      
