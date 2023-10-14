@@ -17,9 +17,12 @@ curl -O -k https://raw.githubusercontent.com/kerl/kerl/master/kerl
 chmod +x kerl
 ./kerl update releases
 ./kerl build 19.2 19.2
-./kerl build-install 19.2 19.2 erlang
-#. erlang/activate
+./kerl install 19.2 erlang
+. erlang/activate
 ./kerl cleanup all
+
+# Activate erlang for every user logon
+echo ". erlang/activate" >> /etc/profile
 
 # REPO is global and must be defined on build
 echo $REPO
