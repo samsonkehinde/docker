@@ -14,6 +14,6 @@ apt-get update
 
 # Install dependencies required for the build
 apt-get -y build-dep freeswitch
-#apt-get install -y libg7221-dev
+apt-get install -y libg7221-dev
 
 apt-get -y clean
