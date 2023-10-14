@@ -1,5 +1,5 @@
 #!/bin/sh -e
-read -p 'Enter Freeswitch Token' TOKEN
+#read -p 'Enter Freeswitch Token' TOKEN
 
 apt-get update
 apt-get install -y gnupg2 wget lsb-release apt-transport-https ca-certificates libldns-dev libg7221-dev
