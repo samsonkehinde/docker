@@ -19,6 +19,12 @@ RUN build/setup-commit.sh
 
 COPY etc/modules.conf freeswitch/modules.conf
 
+# Enable mod_kazoo legacy events 
+sed -i "s/^kazoo_globals.legacy_events = SWITCH_FALSE;/kazoo_globals.legacy_events = SWITCH_TRUE;/g" freeswitch/src/mod/event_handlers/mod_kazoo/kazoo_ei_config.c
+
+# Enable the debugging of the messages sent between kazoo and freeswitch
+sed -i '1,10s/^/#define EI_DEBUG/' freeswitch/src/mod/event_handlers/mod_kazoo/mod_kazoo.h
+
 COPY build/configure.sh build/configure.sh
 RUN build/configure.sh
 

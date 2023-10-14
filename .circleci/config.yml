@@ -63,6 +63,13 @@ jobs:
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:monster-ui .     
 
       - run:
+          name: Build Freeswitch
+          command: |
+            # Build Freeswitch 1.10
+            cd freeswitch && ./build.sh 883d2cb662bed0316e157bd3beb9853e96c60d02
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:freeswitch . 
+
+      - run:
           name: Push base image to docker
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
@@ -72,4 +79,5 @@ jobs:
               docker push thecloudpractice/$NETWORK:rabbitmq
               docker push thecloudpractice/$NETWORK:kazoo
               docker push thecloudpractice/$NETWORK:monster-ui
+              docker push thecloudpractice/$NETWORK:freeswitch
             fi          
