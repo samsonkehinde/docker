@@ -30,30 +30,6 @@ jobs:
             curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin      
-      - run:
-          name: Build BaseOs
-          command: |
-            cd base-os
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:base-os .
-
-      - run:
-          name: Build CouchDB
-          command: |
-            cd couchdb
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:couchdb .  
-
-      - run:
-          name: Build RabbitMQ
-          command: |
-            cd rabbitmq && ./build.sh
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:rabbitmq .  
-
-      - run:
-          name: Build Monster-UI
-          command: |
-            # Build Monster-UI 4.3
-            cd monster-ui && ./build.sh 197ea75edd931fbed9cf33120e65cef854eb14a9
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:monster-ui .     
 
       - run:
           name: Build Freeswitch
@@ -68,17 +44,4 @@ jobs:
             # Build Kamailio 5.0.0 with kazoo v4.3 config.
             cd kamailio && ./build.sh d62fd3e4976633aa6b827d527f4e15de0b08068b
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kamailio . 
-
-      - run:
-          name: Push base image to docker
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-              docker push thecloudpractice/$NETWORK:base-os
-              docker push thecloudpractice/$NETWORK:couchdb
-              docker push thecloudpractice/$NETWORK:rabbitmq
-              docker push thecloudpractice/$NETWORK:kazoo
-              docker push thecloudpractice/$NETWORK:monster-ui
-              docker push thecloudpractice/$NETWORK:freeswitch
-              docker push thecloudpractice/$NETWORK:kamailio
-            fi          
+     
