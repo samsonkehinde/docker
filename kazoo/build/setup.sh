@@ -24,10 +24,9 @@ export PATH=$ERL_TOP/bin:$PATH     # Assuming bash/sh
 
 # REPO is global and must be defined on build
 echo $REPO
+cd ..
 git clone $REPO kazoo
-
 COMMIT=$(cat commit)
-
 cd kazoo
 
 if [ -z $BRANCH ]
