@@ -5,6 +5,9 @@ USER root
 
 ARG REPO=https://github.com/signalwire/freeswitch.git freeswitch
 ARG CONFIG=master
+ARG TOKEN
+
+ENV SW_TOKEN=TOKEN
 
 COPY build/setup-os.sh build/setup-os.sh
 RUN build/setup-os.sh
