@@ -39,5 +39,4 @@ jobs:
           name: Build Freeswitch
           command: |
             # Build Freeswitch 1.10
-            cd freeswitch && ./build.sh 883d2cb662bed0316e157bd3beb9853e96c60d02
-            docker build $BUILD_FLAGS --build-arg TOKEN=$SW_TOKEN -t thecloudpractice/$NETWORK:freeswitch . 
+            cd freeswitch 
