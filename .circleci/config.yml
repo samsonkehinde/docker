@@ -10,6 +10,9 @@ workflows:
 defaults: &defaults
   docker:
     - image: python:3.8
+      auth:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
   working_directory: ~/2600hz/kazoo
   shell: /bin/bash --login
   environment:
@@ -20,7 +23,8 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - setup_remote_docker   
+      - setup_remote_docker:
+        docker_layer_caching: true   
       - run:
         # installs a docker client that will be used to run the docker commands
           name: Install Docker client

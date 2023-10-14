@@ -7,5 +7,5 @@ cmake .
 make
 make install
 
-cd freeswitch
+cd ../freeswitch
 make
