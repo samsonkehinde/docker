@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:stretch
 MAINTAINER Samson Kehinde <samson.kehinde@cloudpractice.cloud>
 
 USER root
