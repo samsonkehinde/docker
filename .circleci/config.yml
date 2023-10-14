@@ -24,7 +24,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-        docker_layer_caching: true   
+  
       - run:
         # installs a docker client that will be used to run the docker commands
           name: Install Docker client
