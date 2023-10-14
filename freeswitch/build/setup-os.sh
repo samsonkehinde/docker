@@ -16,4 +16,11 @@ apt-get update
 apt-get -y build-dep freeswitch
 apt-get install -y libg7221-dev
 
+
+#install library libks for mod_verto
+git clone https://github.com/signalwire/libks /usr/local/src/libks
+cd /usr/local/src/libks
+cmake .
+make && make install
+
 apt-get -y clean
