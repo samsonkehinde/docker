@@ -32,13 +32,6 @@ jobs:
             mv /tmp/docker/* /usr/bin      
 
       - run:
-          name: Build Freeswitch
-          command: |
-            # Build Freeswitch 1.10
-            cd freeswitch && ./build.sh 883d2cb662bed0316e157bd3beb9853e96c60d02
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:freeswitch . 
-
-      - run:
           name: Build Kamailio
           command: |
             # Build Kamailio 5.0.0 with kazoo v4.3 config.
