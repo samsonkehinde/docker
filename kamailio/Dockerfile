@@ -7,7 +7,7 @@ WORKDIR /root
 ENV NETWORK=kazoo
 ENV RABBITMQ=rabbitmq.$NETWORK
 ARG REPO=https://github.com/kamailio/kamailio.git
-ARG CONFIG=4.3
+ARG CONFIG=63cece75a767b70f385a481b22bd6e5cec384ae5
 
 COPY build/setup-os.sh build/setup-os.sh
 RUN build/setup-os.sh
