@@ -9,7 +9,7 @@ workflows:
 
 defaults: &defaults
   docker:
-    - image: cimg/python:3.10.0
+    - image: offical2600hz/circleci
       auth:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
