@@ -12,6 +12,12 @@ then
 	exit 0
 fi
 
+# Compile OpenSSL
+git clone git://git.openssl.org/openssl.git
+cd openssl
+./Configure
+make && make install
+
 #!/bin/sh -e
 curl -O -k https://raw.githubusercontent.com/kerl/kerl/master/kerl
 chmod +x kerl
@@ -40,5 +46,5 @@ else
 	git clean -d -f
 fi
 
-cd deps && make distclean
+cd make && make distclean
 
