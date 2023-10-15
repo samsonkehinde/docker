@@ -4,4 +4,5 @@
 cd kazoo
 cp ../sys.config rel/
 
+make deps
 make compile build-dev-release
