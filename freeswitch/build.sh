@@ -6,4 +6,4 @@ COMMIT=${1:-"$(../bin/get-commit $REPO)"}
 
 echo $COMMIT > etc/commit
 
-DOCKER_BUILDKIT=0 docker build $BUILD_FLAGS --build-arg REPO=$REPO -t $NETWORK/freeswitch .
+DOCKER_BUILDKIT=0 docker build $BUILD_FLAGS --build-arg TOKEN=$SW_TOKEN --build-arg REPO=$REPO -t $NETWORK/freeswitch .

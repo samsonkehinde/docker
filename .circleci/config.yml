@@ -34,7 +34,6 @@ jobs:
           command: |
             # Build Freeswitch 1.10
             cd freeswitch && ./build.sh 883d2cb662bed0316e157bd3beb9853e96c60d02
-            docker build $BUILD_FLAGS --build-arg TOKEN=$SW_TOKEN -t thecloudpractice/$NETWORK:freeswitch . 
 
   build_kazoo:
     <<: *defaults
@@ -48,8 +47,7 @@ jobs:
           name: Build Kazoo
           command: |
             # Build Kazoo 4.3
-            cd kazoo && ./build.sh 252727ff81e76fbce6ce668bae560b506aab439e
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kazoo .            
+            cd kazoo && ./build.sh 252727ff81e76fbce6ce668bae560b506aab439e    
 
   build_kamailio:
     <<: *defaults
@@ -64,7 +62,6 @@ jobs:
           command: |
             # Build Kamailio 5.1.0 with kazoo v4.3 config.
             cd kamailio && ./build.sh 327548cbfdc2c5331d9a9264aa6a1571c35ff02e
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kamailio . 
                
   build_rabbitmq:
     <<: *defaults
@@ -78,7 +75,6 @@ jobs:
           name: Build RabbitMQ
           command: |
             cd rabbitmq && ./build.sh
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:rabbitmq .
 
   build_couchdb:
     <<: *defaults
@@ -91,8 +87,7 @@ jobs:
       - run:
           name: Build CouchDB
           command: |
-            cd couchdb
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:couchdb .  
+            cd couchdb && ./build.sh 
      
   build_base_os:
     <<: *defaults
@@ -105,5 +100,4 @@ jobs:
       - run:
           name: Build BaseOs
           command: |
-            cd base-os
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:base-os . 
+            cd base-os && ./build.sh
