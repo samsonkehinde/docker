@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 # override on run with --env option
