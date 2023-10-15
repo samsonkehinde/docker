@@ -40,3 +40,5 @@ else
 	git clean -d -f
 fi
 
+cd deps && make distclean
+
