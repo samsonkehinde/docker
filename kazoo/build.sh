@@ -11,10 +11,5 @@ GID=$(id -g)
 
 echo Using repository:$REPO commit:$COMMIT branch:$BRANCH
 echo $COMMIT > etc/commit
-docker build $BUILD_FLAGS -t $NETWORK/kazoo \
-	--build-arg REPO=$REPO \
-	--build-arg SKIP_BUILD=$SKIP_BUILD \
-	--build-arg UID=$UID \
-	--build-arg GID=$GID \
-	--build-arg BRANCH=$BRANCH \
-	.
+DOCKER_BUILDKIT=0 docker build $BUILD_FLAGS -t $NETWORK/kazoo --build-arg REPO=$REPO --build-arg SKIP_BUILD=$SKIP_BUILD --build-arg UID=$UID --build-arg GID=$GID \
+	--build-arg BRANCH=$BRANCH .
