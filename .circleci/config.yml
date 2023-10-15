@@ -5,7 +5,8 @@ workflows:
 
   build_branch:
     jobs:
-      - build
+      - build_fs
+      - build_kazoo
 
 defaults: &defaults
   docker:
@@ -20,7 +21,7 @@ defaults: &defaults
     BASH_ENV: ".git/.bashrc"
     
 jobs:
-  build:
+  build_fs:
     <<: *defaults
     steps:
       - checkout
@@ -34,3 +35,18 @@ jobs:
             # Build Freeswitch 1.10
             cd freeswitch && ./build.sh 883d2cb662bed0316e157bd3beb9853e96c60d02
             docker build $BUILD_FLAGS --build-arg TOKEN=$SW_TOKEN -t thecloudpractice/$NETWORK:freeswitch . 
+
+    build_kazoo:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.7
+          docker_layer_caching: true
+
+      - run:
+          name: Build Kazoo
+          command: |
+            # Build Kazoo 4.3
+            cd kazoo && ./build.sh b556db9263b51e4869d28ae9d459489c5731aca1
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kazoo .            

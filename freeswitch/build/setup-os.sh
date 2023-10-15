@@ -23,4 +23,7 @@ cd /usr/local/src/libks
 cmake .
 make && make install
 
+# verify libks install
+ldconfig && ldconfig -p | grep libks
+
 apt-get -y clean
