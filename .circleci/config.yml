@@ -48,7 +48,7 @@ jobs:
           name: Build Kazoo
           command: |
             # Build Kazoo 4.3
-            cd kazoo && ./build.sh e8a818f718e6dbc1cf6d55bb7031b63b4fcd963d
+            cd kazoo && ./build.sh 252727ff81e76fbce6ce668bae560b506aab439e
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kazoo .            
 
   build_kamailio:
