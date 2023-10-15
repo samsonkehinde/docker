@@ -48,5 +48,62 @@ jobs:
           name: Build Kazoo
           command: |
             # Build Kazoo 4.3
-            cd kazoo && ./build.sh b556db9263b51e4869d28ae9d459489c5731aca1
+            cd kazoo && ./build.sh e8a818f718e6dbc1cf6d55bb7031b63b4fcd963d
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kazoo .            
+
+  build_kamailio:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.7
+          docker_layer_caching: true
+
+      - run:
+          name: Build Kamailio
+          command: |
+            # Build Kamailio 5.1.0 with kazoo v4.3 config.
+            cd kamailio && ./build.sh 327548cbfdc2c5331d9a9264aa6a1571c35ff02e
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:kamailio . 
+               
+  build_rabbitmq:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.7
+          docker_layer_caching: true
+
+      - run:
+          name: Build RabbitMQ
+          command: |
+            cd rabbitmq && ./build.sh
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:rabbitmq .
+
+  build_couchdb:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.7
+          docker_layer_caching: true
+
+      - run:
+          name: Build CouchDB
+          command: |
+            cd couchdb
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:couchdb .  
+     
+  build_base_os:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.7
+          docker_layer_caching: true
+
+      - run:
+          name: Build BaseOs
+          command: |
+            cd base-os
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:base-os . 
