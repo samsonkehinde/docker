@@ -27,7 +27,7 @@ echo ". erlang/activate" >> /etc/profile
 # REPO is global and must be defined on build
 echo $REPO
 git clone $REPO kazoo
-COMMIT=$(cat commit)
+COMMIT=$(cat etc/commit)
 cd kazoo
 
 if [ -z $BRANCH ]
