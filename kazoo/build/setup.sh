@@ -21,7 +21,6 @@ chmod +x kerl
 ./kerl update releases
 ./kerl build 19.3.6.5 19.3.6.5
 ./kerl install 19.3.6.5 erlang
-. erlang/activate
 ./kerl cleanup all
 
 # Activate erlang for every user logon
@@ -43,5 +42,6 @@ else
 	git clean -d -f
 fi
 
-cd deps && make distclean
+. erlang/activate
+make deps
 
