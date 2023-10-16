@@ -2,7 +2,7 @@
 apt-get update
 apt-get upgrade -y
 
-apt-get -y --force-yes install vim curl wget git procps make python python3 build-essential zip unzip libexpat-dev unixodbc-dev libssh2-1-dev libssl-dev libncurses5-dev autoconf
+apt-get -y --force-yes install git
 
 apt-get -y clean
 
@@ -14,18 +14,18 @@ fi
 
 COMMIT=$(cat commit)
 
-# Compile OpenSSL
-curl https://www.openssl.org/source/openssl-1.0.2r.tar.gz | tar xfz - && cd openssl-1.0.2r && ./config --prefix=/usr/local/openssl-1.0.2r -fpic
-make && make install
+# # Compile OpenSSL
+# curl https://www.openssl.org/source/openssl-1.0.2r.tar.gz | tar xfz - && cd openssl-1.0.2r && ./config --prefix=/usr/local/openssl-1.0.2r -fpic
+# make && make install
 
-cd ..
-#!/bin/sh -e
-curl -O -k https://raw.githubusercontent.com/kerl/kerl/master/kerl
-chmod +x kerl
-./kerl update releases
-./kerl build 19.3.6.5 19.3.6.5
-./kerl install 19.3.6.5 erlang
-./kerl cleanup all
+# cd ..
+# #!/bin/sh -e
+# curl -O -k https://raw.githubusercontent.com/kerl/kerl/master/kerl
+# chmod +x kerl
+# ./kerl update releases
+# ./kerl build 19.3.6.5 19.3.6.5
+# ./kerl install 19.3.6.5 erlang
+# ./kerl cleanup all
 
-# Activate erlang for every user logon
-echo ". erlang/activate" >> /etc/profile
+# # Activate erlang for every user logon
+# echo ". erlang/activate" >> /etc/profile
