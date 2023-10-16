@@ -18,6 +18,10 @@ ARG GID
 EXPOSE 8000
 
 COPY etc/commit commit
+
+COPY build/setup-os.sh build/setup-os.sh
+RUN build/setup-os.sh
+
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 
