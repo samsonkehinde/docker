@@ -22,27 +22,3 @@ COPY etc/commit commit
 COPY build/setup-os.sh build/setup-os.sh
 RUN build/setup-os.sh
 
-COPY build/setup.sh build/setup.sh
-RUN build/setup.sh
-
-COPY etc/config.ini config.ini
-
-COPY build/cmd.sh ./cmd.sh
-
-COPY build/setup_uid.sh build/setup_uid.sh
-USER root
-RUN build/setup_uid.sh
-#USER user
-
-COPY etc/sys.config sys.config
-COPY build/build.sh build/build.sh
-RUN build/build.sh
-
-COPY build/config-kazoo.sh build/config-kazoo.sh
-RUN build/config-kazoo.sh
-
-COPY build/run.sh run.sh
-
-RUN ln -s /opt/kazoo/core/sup/priv/sup /usr/bin/sup
-
-ENTRYPOINT ./run.sh

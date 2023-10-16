@@ -42,6 +42,6 @@ else
 	git clean -d -f
 fi
 
-. erlang/activate
+. erlang/activate./ker
 make deps
 
