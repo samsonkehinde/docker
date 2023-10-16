@@ -10,7 +10,7 @@ export KZname="-name $KAZOO_NODE"
 
 [ ! -e kazoo/erlang.mk ] && echo "Container is built without Kazoo sources, please specify with KAZOO_SOURCE env variable" && exit 1
 
-#. /home/user/erlang/activate
+. ./erlang/activate
 
 cd kazoo
 if [ -e ./skip_build ]
