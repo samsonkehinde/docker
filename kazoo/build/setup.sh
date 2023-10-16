@@ -6,12 +6,15 @@ then
 	exit 0
 fi
 
+COMMIT=$(cat commit)
+
 # Compile OpenSSL
 git clone git://git.openssl.org/openssl.git
 cd openssl
 ./Configure
 make && make install
 
+cd ..
 #!/bin/sh -e
 curl -O -k https://raw.githubusercontent.com/kerl/kerl/master/kerl
 chmod +x kerl
@@ -27,7 +30,7 @@ echo ". erlang/activate" >> /etc/profile
 # REPO is global and must be defined on build
 echo $REPO
 git clone $REPO kazoo
-COMMIT=$(cat etc/commit)
+
 cd kazoo
 
 if [ -z $BRANCH ]
