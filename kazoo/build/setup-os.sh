@@ -15,9 +15,7 @@ fi
 COMMIT=$(cat commit)
 
 # Compile OpenSSL
-git clone git://git.openssl.org/openssl.git
-cd openssl
-./Configure
+curl https://www.openssl.org/source/openssl-1.0.2r.tar.gz | tar xfz - && cd openssl-1.0.2r && ./config --prefix=/usr/local/openssl-1.0.2r -fpic
 make && make install
 
 cd ..
