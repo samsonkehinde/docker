@@ -1,10 +1,5 @@
 #!/bin/sh -e
-apt-get update
-apt-get upgrade -y
 
-apt-get -y --force-yes install git
-
-apt-get -y clean
 
 if [ -n "$SKIP_BUILD" ]
 then
