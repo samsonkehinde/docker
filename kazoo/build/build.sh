@@ -1,9 +1,10 @@
 #!/bin/sh -e
 [ -n "$SKIP_BUILD" ] && exit 0
 
-cd kazoo
+. ./erlang/activate
+
 cp ../sys.config rel/
 
-cd  
+cd kazoo
 make deps
 make compile build-dev-release
