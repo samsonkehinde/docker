@@ -3,8 +3,8 @@
 
 . ./erlang/activate
 
+cd kazoo
 cp ../sys.config rel/
 
-cd kazoo
 make deps
 make compile build-dev-release
