@@ -55,7 +55,6 @@ corex \
 avp \
 avpops \
 jsonrpcs \
-
 xlog"
 
 EXCLUDE_MODULES="alias_db \
