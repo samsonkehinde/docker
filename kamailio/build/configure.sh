@@ -48,6 +48,7 @@ usrloc \
 uuid \
 websocket \
 xhttp \
+mqueue \
 xlog"
 
 EXCLUDE_MODULES="alias_db \
@@ -89,7 +90,6 @@ mangler \
 matrix \
 mediaproxy \
 mohqueue \
-mqueue \
 msilo \
 msrp \
 mtree \
