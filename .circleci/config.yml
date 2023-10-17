@@ -108,7 +108,7 @@ jobs:
             cd rabbitmq && ./build.sh
             docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
             docker tag $NETWORK/rabbitmq:latest thecloudpractice/rabbitmq:${CIRCLE_BRANCH}
-            docker push thecloudpractice/$NETWORK:${CIRCLE_BRANCH}
+            docker push thecloudpractice/rabbitmq:${CIRCLE_BRANCH}
 
   build_couchdb:
     <<: *defaults
