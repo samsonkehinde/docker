@@ -13,9 +13,6 @@ EXPOSE 3000
 
 ENV WWW=/usr/share/nginx
 
-COPY build/setup-os.sh build/setup-os.sh
-RUN build/setup-os.sh
-
 COPY build/setup.sh build/setup.sh
 RUN build/setup.sh
 
