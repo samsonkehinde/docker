@@ -1,4 +1,4 @@
-FROM thecloudpractice/kazoo:base-os
+FROM thecloudpractice/base-os
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 USER root
