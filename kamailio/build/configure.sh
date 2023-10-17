@@ -49,6 +49,13 @@ uuid \
 websocket \
 xhttp \
 mqueue \
+cfg_rpc \
+cfgutils \
+corex \
+avp \
+avpops \
+jsonrpcs \
+
 xlog"
 
 EXCLUDE_MODULES="alias_db \
@@ -57,16 +64,11 @@ auth_db \
 auth_diameter \
 auth_openbts \
 auth_xkeys \
-avp \
-avpops \
 benchmark \
 blst \
 call_control \
 cfg_db \
-cfg_rpc \
 cfgt \
-cfgutils \
-corex \
 counters \
 db2_ops \
 db_cluster \
@@ -83,7 +85,6 @@ enum \
 exec \
 group \
 imc \
-jsonrpcs \
 log_custom \
 malloc_test \
 mangler \
