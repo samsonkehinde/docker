@@ -5,8 +5,12 @@ workflows:
 
   build_branch:
     jobs:
-      #- build_fs
+      - build_couchdb
+      - build_rabbitmq
+      - build_kamailio
+      - build_fs
       - build_kazoo
+      - build_monster-ui
 
 defaults: &defaults
   docker:
@@ -19,7 +23,8 @@ defaults: &defaults
   shell: /bin/bash --login
   environment:
     BASH_ENV: ".git/.bashrc"
-    
+
+
 jobs:
   build_fs:
     <<: *defaults
@@ -35,6 +40,37 @@ jobs:
             # Build Freeswitch 1.10
             cd freeswitch && ./build.sh
 
+      - run:
+          name: Push Freeswitch image to docker
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push thecloudpractice/$NETWORK:freeswitch
+            fi 
+
+  build_monster-ui:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.7
+          docker_layer_caching: true
+
+      - run:
+          name: Build Monster-UI
+          command: |
+            # Build Monster-UI 4.3
+            cd monster-ui && ./build.sh 197ea75edd931fbed9cf33120e65cef854eb14a9
+            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:monster-ui . 
+
+      - run:
+          name: Push Monster-UI to docker
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push thecloudpractice/$NETWORK:monster-ui
+            fi 
+
   build_kazoo:
     <<: *defaults
     steps:
@@ -47,7 +83,15 @@ jobs:
           name: Build Kazoo
           command: |
             # Build Kazoo 4.3
-            cd kazoo && ./build.sh 54c7d3b238c98a6e4e22555c2df85917c5885388    
+            cd kazoo && ./build.sh 54c7d3b238c98a6e4e22555c2df85917c5885388 
+
+      - run:
+          name: Push Kazoo image to docker
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push thecloudpractice/$NETWORK:kazoo
+            fi 
 
   build_kamailio:
     <<: *defaults
@@ -62,6 +106,14 @@ jobs:
           command: |
             # Build Kamailio 5.1.0 with kazoo v4.3 config.
             cd kamailio && ./build.sh 327548cbfdc2c5331d9a9264aa6a1571c35ff02e
+
+      - run:
+          name: Push Kamailio image to docker
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push thecloudpractice/$NETWORK:kamailio
+            fi 
                
   build_rabbitmq:
     <<: *defaults
@@ -76,6 +128,14 @@ jobs:
           command: |
             cd rabbitmq && ./build.sh
 
+      - run:
+          name: Push rabbitmq image to docker
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push thecloudpractice/$NETWORK:rabbitmq
+            fi  
+
   build_couchdb:
     <<: *defaults
     steps:
@@ -88,6 +148,13 @@ jobs:
           name: Build CouchDB
           command: |
             cd couchdb && ./build.sh 
+      - run:
+          name: Push couchdb image to docker
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push thecloudpractice/$NETWORK:couchdb
+            fi                 
      
   build_base_os:
     <<: *defaults
@@ -101,3 +168,10 @@ jobs:
           name: Build BaseOs
           command: |
             cd base-os && ./build.sh
+      - run:
+          name: Push base image to docker
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker push thecloudpractice/$NETWORK:base-os
+            fi     
