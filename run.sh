@@ -9,6 +9,6 @@ couchdb/run.sh
 
 kazoo/run.sh
 kamailio/run.sh
-freeswitch2/run.sh
+freeswitch/run.sh
 
 monster-ui/run.sh
