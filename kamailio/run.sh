@@ -1,7 +1,7 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
 NETWORK=${NETWORK:-"kazoo"}
-IMAGE=${2:-"thecloudpractice/kamailio:master"}
+IMAGE=${2:-"thecloudpractice/kamailio"}
 NAME=${NAME:-"kamailio.$NETWORK"}
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]

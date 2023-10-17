@@ -39,9 +39,8 @@ jobs:
           command: |
             # Build Freeswitch 1.10
             cd freeswitch && ./build.sh
-            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-            docker tag $NETWORK/freeswitch:latest thecloudpractice/freeswitch:${CIRCLE_BRANCH}
-            docker push thecloudpractice/freeswitch:${CIRCLE_BRANCH}
+            echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
+            docker push thecloudpractice/freeswitch
 
   build_monster-ui:
     <<: *defaults
@@ -57,8 +56,7 @@ jobs:
             # Build Monster-UI 4.3
             cd monster-ui && ./build.sh 197ea75edd931fbed9cf33120e65cef854eb14a9
             echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
-            docker tag $NETWORK/monster-ui:latest thecloudpractice/monster-ui:${CIRCLE_BRANCH}
-            docker push thecloudpractice/monster-ui:${CIRCLE_BRANCH}
+            docker push thecloudpractice/monster-ui
 
   build_kazoo:
     <<: *defaults
@@ -74,8 +72,7 @@ jobs:
             # Build Kazoo 4.3
             cd kazoo && ./build.sh 54c7d3b238c98a6e4e22555c2df85917c5885388 
             echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
-            docker tag $NETWORK/kazoo:latest thecloudpractice/kazoo:${CIRCLE_BRANCH}
-            docker push thecloudpractice/kazoo:${CIRCLE_BRANCH}
+            docker push thecloudpractice/kazoo
 
   build_kamailio:
     <<: *defaults
@@ -91,8 +88,7 @@ jobs:
             # Build Kamailio 5.5 with kazoo v4.3 config.
             cd kamailio && ./build.sh 327548cbfdc2c5331d9a9264aa6a1571c35ff02e
             echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
-            docker tag $NETWORK/kamailio:latest thecloudpractice/kamailio:${CIRCLE_BRANCH}
-            docker push thecloudpractice/kamailio:${CIRCLE_BRANCH}
+            docker push thecloudpractice/kamailio
                
   build_rabbitmq:
     <<: *defaults
@@ -107,8 +103,7 @@ jobs:
           command: |
             cd rabbitmq && ./build.sh
             echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
-            docker tag $NETWORK/rabbitmq:latest thecloudpractice/rabbitmq:${CIRCLE_BRANCH}
-            docker push thecloudpractice/rabbitmq:${CIRCLE_BRANCH}
+            docker push thecloudpractice/rabbitmq
 
   build_couchdb:
     <<: *defaults
@@ -123,8 +118,7 @@ jobs:
           command: |
             cd couchdb && ./build.sh 
             echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
-            docker tag $NETWORK/couchdb:latest thecloudpractice/couchdb:${CIRCLE_BRANCH}
-            docker push thecloudpractice/couchdb:${CIRCLE_BRANCH}
+            docker push thecloudpractice/couchdb
      
   build_base_os:
     <<: *defaults
@@ -140,6 +134,5 @@ jobs:
             cd base-os && ./build.sh
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
-              docker tag $NETWORK/base-os:latest thecloudpractice/$NETWORK:base-os
-              docker push thecloudpractice/$NETWORK:base-os
+              docker push thecloudpractice/base-os
             fi 
