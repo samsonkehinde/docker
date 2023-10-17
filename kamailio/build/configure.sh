@@ -55,6 +55,9 @@ corex \
 avp \
 avpops \
 jsonrpcs \
+nat_traversal \
+rtimer \
+debugger \
 xlog"
 
 EXCLUDE_MODULES="alias_db \
@@ -72,7 +75,6 @@ counters \
 db2_ops \
 db_cluster \
 db_flatstore \
-debugger \
 dialog \
 diversion \
 dmq \
@@ -93,7 +95,6 @@ mohqueue \
 msilo \
 msrp \
 mtree \
-nat_traversal \
 nosip \
 pdb \
 pdt \
@@ -105,7 +106,6 @@ pua_mi \
 p_usrloc \
 qos \
 ratelimit \
-rtimer \
 rtjson \
 rtpengine \
 rtpproxy \
