@@ -85,7 +85,7 @@ jobs:
       - run:
           name: Build Kamailio
           command: |
-            # Build Kamailio 5.5 with kazoo v4.3 config.
+            # Build Kamailio 5.5 with kazoo v4.1 config.
             cd kamailio && ./build.sh 327548cbfdc2c5331d9a9264aa6a1571c35ff02e
             echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_USERNAME --password-stdin
             docker push thecloudpractice/kamailio
