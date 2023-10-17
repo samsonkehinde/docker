@@ -41,6 +41,7 @@ jobs:
             cd freeswitch && ./build.sh
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker tag $NETWORK/freeswitch:latest thecloudpractice/$NETWORK:freeswitch
               docker push thecloudpractice/$NETWORK:freeswitch
             fi 
 
@@ -60,6 +61,7 @@ jobs:
             docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:monster-ui . 
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker tag $NETWORK/monster-ui:latest thecloudpractice/$NETWORK:monster-ui
               docker push thecloudpractice/$NETWORK:monster-ui
             fi 
 
@@ -78,6 +80,7 @@ jobs:
             cd kazoo && ./build.sh 54c7d3b238c98a6e4e22555c2df85917c5885388 
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker tag $NETWORK/kazoo:latest thecloudpractice/$NETWORK:kazoo
               docker push thecloudpractice/$NETWORK:kazoo
             fi 
 
@@ -96,6 +99,7 @@ jobs:
             cd kamailio && ./build.sh 327548cbfdc2c5331d9a9264aa6a1571c35ff02e
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker tag $NETWORK/kamailio:latest thecloudpractice/$NETWORK:kamailio
               docker push thecloudpractice/$NETWORK:kamailio
             fi 
                
@@ -131,6 +135,7 @@ jobs:
             cd couchdb && ./build.sh 
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker tag $NETWORK/couchdb:latest thecloudpractice/$NETWORK:couchdb
               docker push thecloudpractice/$NETWORK:couchdb
             fi      
      
@@ -148,5 +153,6 @@ jobs:
             cd base-os && ./build.sh
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker tag $NETWORK/base-os:latest thecloudpractice/$NETWORK:base-os
               docker push thecloudpractice/$NETWORK:base-os
             fi 
