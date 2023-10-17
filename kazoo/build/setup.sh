@@ -1,6 +1,8 @@
 #!/bin/sh -e
 
-. ./erlang/activate
+#. ./erlang/activate
+
+COMMIT=$(cat commit)
 
 # REPO is global and must be defined on build
 echo $REPO

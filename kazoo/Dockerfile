@@ -1,4 +1,4 @@
-FROM erlang:19.0
+FROM debian:buster
 MAINTAINER Roman Galeev <jamhed@2600hz.com>
 
 # override on run with --env option

@@ -12,14 +12,12 @@ then
 	exit 0
 fi
 
-COMMIT=$(cat commit)
-
 # Compile OpenSSL
 curl https://www.openssl.org/source/openssl-1.0.2r.tar.gz | tar xfz - && cd openssl-1.0.2r && ./config --prefix=/usr/local/openssl-1.0.2r -fpic
 make && make install
 
-wget http://www.erlang.org/download/otp_src_19.3.tar.gz
-tar -zxf otp_src_19.3.tar.gz
+wget https://erlang.org/download/otp_src_19.3.tar.gz
+tar -vzxf otp_src_19.3.tar.gz
 cd otp_src_19.3
 export ERL_TOP=`pwd` 
 ./configure --with-ssl=/usr/local/openssl-1.0.2r
