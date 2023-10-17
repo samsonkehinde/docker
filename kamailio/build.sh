@@ -5,4 +5,4 @@ COMMIT=${1:-"$(../bin/get-commit $REPO)"}
 
 echo $COMMIT > etc/commit
 
-DOCKER_BUILDKIT=0 docker build $BUILD_FLAGS --build-arg REPO=$REPO --build-arg CONFIG=47838e03eb23fb57b7f86bf27c02ce79476c503d -t thecloudpractice/kamailio .
+DOCKER_BUILDKIT=0 docker build $BUILD_FLAGS --build-arg REPO=$REPO --build-arg CONFIG=ef98bf453cb81475bbf5ccbc0635749a975b093c -t thecloudpractice/kamailio .
