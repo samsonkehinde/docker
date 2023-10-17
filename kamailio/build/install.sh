@@ -5,7 +5,7 @@ CFG_BASE="$KAMAILIO_BASE/etc/kamailio"
 DEFAULT_CFG="$CFG_BASE/default.cfg"
 DEFS_CFG="$CFG_BASE/defs.cfg"
 LOCAL_CFG="$CFG_BASE/local.cfg"
-DISPATCHER_CFG="$CFG_BASE/dispatcher-role-5.1.cfg"
+DISPATCHER_CFG="$CFG_BASE/dispatcher-role.cfg"
 KAMCTLRC="$KAMAILIO_BASE/.kamctlrc"
 
 cd kamailio
