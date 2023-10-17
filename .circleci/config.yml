@@ -5,12 +5,12 @@ workflows:
 
   build_branch:
     jobs:
-      #- build_couchdb
+      - build_couchdb
       - build_rabbitmq
-      #- build_kamailio
-      #- build_fs
-      #- build_kazoo
-      #- build_monster-ui
+      - build_kamailio
+      - build_fs
+      - build_kazoo
+      - build_monster-ui
 
 defaults: &defaults
   docker:
