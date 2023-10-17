@@ -1,6 +1,7 @@
 #!/bin/sh -e
 FLAGS=${FLAGS:-"-td"}
 NETWORK=${NETWORK:-"kazoo"}
+IMAGE=${2:-"thecloudpractice/kazoo:master"}
 NAME=${NAME:-"kazoo.$NETWORK"}
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
@@ -20,8 +21,6 @@ fi
 
 echo -n "starting: $NAME "
 docker run $FLAGS $KAZOO_SOURCE_VOLUME --net $NETWORK -h $NAME -p 8000:8000 -p 5555:5555 --name $NAME --env NETWORK=kazoo \
-	--env COUCHDB=couchdb.$NETWORK \
-	--env RABBITMQ=rabbitmq.$NETWORK \
-	--env KAZOO_NODE=kazoo \
+	--env COUCHDB=couchdb.$NETWORK --env RABBITMQ=rabbitmq.$NETWORK --env KAZOO_NODE=kazoo \
 	--env KAZOO_APPS=sysconf,blackhole,callflow,cdr,conference,crossbar,fax,hangups,media_mgr,milliwatt,omnipresence,pivot,registrar,reorder,stepswitch,teletype,trunkstore,webhooks,ecallmgr \
-	$NETWORK/kazoo
+	$IMAGE

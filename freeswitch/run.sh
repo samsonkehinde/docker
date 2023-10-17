@@ -1,7 +1,7 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-IMAGE=${2:-"kazoo/freeswitch"}
 NETWORK=${NETWORK:-"kazoo"}
+IMAGE=${2:-"thecloudpractice/freeswitch:master"}
 NAME=${NAME:-"freeswitch.$NETWORK"}
 KAMAILIO=${KAMAILIO:-"kamailio.$NETWORK"}
 
