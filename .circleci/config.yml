@@ -5,12 +5,12 @@ workflows:
 
   build_branch:
     jobs:
-      - build_couchdb
+      #- build_couchdb
       - build_rabbitmq
-      - build_kamailio
-      - build_fs
-      - build_kazoo
-      - build_monster-ui
+      #- build_kamailio
+      #- build_fs
+      #- build_kazoo
+      #- build_monster-ui
 
 defaults: &defaults
   docker:
@@ -113,6 +113,7 @@ jobs:
             cd rabbitmq && ./build.sh
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+              docker tag $NETWORK/rabbitmq:latest thecloudpractice/$NETWORK:rabbitmq
               docker push thecloudpractice/$NETWORK:rabbitmq
             fi  
 
