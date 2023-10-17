@@ -39,11 +39,9 @@ jobs:
           command: |
             # Build Freeswitch 1.10
             cd freeswitch && ./build.sh
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-              docker tag $NETWORK/freeswitch:latest thecloudpractice/$NETWORK:freeswitch
-              docker push thecloudpractice/$NETWORK:freeswitch
-            fi 
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+            docker tag $NETWORK/freeswitch:latest thecloudpractice/freeswitch:${CIRCLE_BRANCH}
+            docker push thecloudpractice/freeswitch:${CIRCLE_BRANCH}
 
   build_monster-ui:
     <<: *defaults
@@ -58,12 +56,9 @@ jobs:
           command: |
             # Build Monster-UI 4.3
             cd monster-ui && ./build.sh 197ea75edd931fbed9cf33120e65cef854eb14a9
-            docker build $BUILD_FLAGS -t thecloudpractice/$NETWORK:monster-ui . 
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-              docker tag $NETWORK/monster-ui:latest thecloudpractice/$NETWORK:monster-ui
-              docker push thecloudpractice/$NETWORK:monster-ui
-            fi 
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+            docker tag $NETWORK/monster-ui:latest thecloudpractice/monster-ui:${CIRCLE_BRANCH}
+            docker push thecloudpractice/monster-ui:${CIRCLE_BRANCH}
 
   build_kazoo:
     <<: *defaults
@@ -78,11 +73,9 @@ jobs:
           command: |
             # Build Kazoo 4.3
             cd kazoo && ./build.sh 54c7d3b238c98a6e4e22555c2df85917c5885388 
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-              docker tag $NETWORK/kazoo:latest thecloudpractice/$NETWORK:kazoo
-              docker push thecloudpractice/$NETWORK:kazoo
-            fi 
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+            docker tag $NETWORK/kazoo:latest thecloudpractice/kazoo:${CIRCLE_BRANCH}
+            docker push thecloudpractice/kazoo:${CIRCLE_BRANCH}
 
   build_kamailio:
     <<: *defaults
@@ -97,11 +90,9 @@ jobs:
           command: |
             # Build Kamailio 5.1.0 with kazoo v4.3 config.
             cd kamailio && ./build.sh 327548cbfdc2c5331d9a9264aa6a1571c35ff02e
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-              docker tag $NETWORK/kamailio:latest thecloudpractice/$NETWORK:kamailio
-              docker push thecloudpractice/$NETWORK:kamailio
-            fi 
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+            docker tag $NETWORK/kamailio:latest thecloudpractice/kamailio:${CIRCLE_BRANCH}
+            docker push thecloudpractice/kamailio:${CIRCLE_BRANCH}
                
   build_rabbitmq:
     <<: *defaults
@@ -115,11 +106,9 @@ jobs:
           name: Build RabbitMQ
           command: |
             cd rabbitmq && ./build.sh
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-              docker tag $NETWORK/rabbitmq:latest thecloudpractice/$NETWORK:rabbitmq
-              docker push thecloudpractice/$NETWORK:rabbitmq
-            fi  
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+            docker tag $NETWORK/rabbitmq:latest thecloudpractice/rabbitmq:${CIRCLE_BRANCH}
+            docker push thecloudpractice/$NETWORK:${CIRCLE_BRANCH}
 
   build_couchdb:
     <<: *defaults
@@ -135,8 +124,8 @@ jobs:
             cd couchdb && ./build.sh 
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-              docker tag $NETWORK/couchdb:latest thecloudpractice/$NETWORK:couchdb
-              docker push thecloudpractice/$NETWORK:couchdb
+              docker tag $NETWORK/couchdb:latest thecloudpractice/couchdb:${CIRCLE_BRANCH}
+              docker push thecloudpractice/couchdb:${CIRCLE_BRANCH}
             fi      
      
   build_base_os:
