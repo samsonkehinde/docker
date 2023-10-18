@@ -13,17 +13,17 @@ cd ../kazoo-erlang && ./build.sh
 cd ../rabbitmq && ./build.sh
 cd ../couchdb &&./build.sh
 
-# The configuration file for kazoo works with the below version.
+#  Kamailio v5.0.0, built against Kazoo 4.1.0 config. 
 cd ../kamailio && ./build.sh d62fd3e4976633aa6b827d527f4e15de0b08068b
 # 1.6.13
 #cd ../freeswitch && ./build.sh e755b430da70bd63eebf1dfddacdce48ce863fce
 # 1.8
 #cd ../freeswitch && ./build.sh 6047ebddfcb06c131a91f329e86fc8efba3e9e31
 # 1.10
-cd ../freeswitch && ./build.sh 883d2cb662bed0316e157bd3beb9853e96c60d02
+cd ../freeswitch && ./build.sh
 #cd ../freeswitch2 && ./build.sh
 # 4.3.142
 #cd ../kazoo && ./build.sh c47805b98551d4394f937af5ad745a54e5b9c808
-cd ../kazoo && ./build.sh 44d74cd7373e7706f6afa9809a1d07294c60258d
+cd ../kazoo && ./build.sh 54c7d3b238c98a6e4e22555c2df85917c5885388
 #5.1
-cd ../monster-ui && ./build.sh c3fda2529e403e3cf952fa034802c045da7d3630
+cd ../monster-ui && ./build.sh 197ea75edd931fbed9cf33120e65cef854eb14a9
