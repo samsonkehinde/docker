@@ -40,6 +40,7 @@ WORKDIR "/usr/local/freeswitch"
 
 COPY build/run.sh run.sh
 
-USER freeswitch
+#USER freeswitch
+USER root
 
 ENTRYPOINT [ "./run.sh" ]
