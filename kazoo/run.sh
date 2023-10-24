@@ -22,6 +22,6 @@ fi
 
 echo -n "starting: $NAME "
 docker run $FLAGS $KAZOO_SOURCE_VOLUME --net ${HOST:-$NETWORK} -h $NAME -p 8000:8000 -p 5555:5555 --name $NAME --env NETWORK=$NETWORK \
-	--env COUCHDB=172.20.0.10 --env RABBITMQ=172.20.0.10 --env KAZOO_NODE=kazoo  --add-host freeswitch01.kazoo:host.docker.internal --add-host host.docker.internal:host-gateway --add-host kaz01.voip.cloudpractoce.cloud:172.20.0.10\
+	--env COUCHDB=172.20.0.10 --env RABBITMQ=172.20.0.10 --env KAZOO_NODE=kazoo  --add-host freeswitch01.kazoo:172.31.37.111 --add-host kaz01.voip.cloudpractoce.cloud:172.20.0.10\
 	--env KAZOO_APPS=sysconf,blackhole,callflow,cdr,conference,crossbar,fax,hangups,media_mgr,milliwatt,omnipresence,pivot,registrar,reorder,stepswitch,teletype,trunkstore,webhooks,ecallmgr \
 	$IMAGE
