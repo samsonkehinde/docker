@@ -14,7 +14,7 @@ then
 fi
 
 echo -n "starting: $NAME "
-docker run $FLAGS --net ${HOST:-$NETWORK} -h "freeswitch.$NETWORK" --name $NAME --env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} $IMAGE
+docker run $FLAGS --net ${HOST:-$NETWORK} -h $NAME --name $NAME --env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} $IMAGE
 
 echo -n "adding dispatcher $NAME to kamailio $KAMAILIO "
 docker exec $KAMAILIO dispatcher_add.sh 1 $NAME
