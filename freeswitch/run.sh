@@ -1,8 +1,8 @@
 #!/bin/sh -e
 FLAGS=${1:-"-td"}
-NETWORK=${NETWORK:-"kazoo"}
 IMAGE=${2:-"thecloudpractice/freeswitch"}
-NAME=${NAME:-"freeswitch.$NETWORK"}
+read -p 'Hostname: ' NAME
+read -p 'Network to add container: ' HOST
 KAMAILIO=${KAMAILIO:-"kamailio.$NETWORK"}
 
 if [ -n "$(docker ps -aq -f name=$NAME)" ]
@@ -14,7 +14,7 @@ then
 fi
 
 echo -n "starting: $NAME "
-docker run $FLAGS --net host -h $NAME --name $NAME --env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} $IMAGE
+docker run $FLAGS --net ${HOST:-$NETWORK} -h "freeswitch.$NETWORK" --name $NAME --env RABBITMQ=${RABBITMQ:-"rabbitmq.$NETWORK"} $IMAGE
 
 echo -n "adding dispatcher $NAME to kamailio $KAMAILIO "
 docker exec $KAMAILIO dispatcher_add.sh 1 $NAME
